@@ -24,6 +24,7 @@
                                         <th>ID</th>
                                         <th>Kode Ruangan</th>
                                         <th>Nama Ruangan</th>
+                                        <th>Gedung</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -53,6 +54,7 @@
             {data: 'id', name:'id'},
             {data: 'code', name:'code'},
             {data: 'name', name:'name'},
+            {data: 'building', name:'building'},
             {
                 data: 'action',
                 name: 'action',
