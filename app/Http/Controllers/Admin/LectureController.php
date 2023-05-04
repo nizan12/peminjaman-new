@@ -65,6 +65,7 @@ class LectureController extends Controller
     {
         $data['code'] = $request->code;
         $data['name'] = $request->name;
+        $data['nik'] = $request->nik;
 
         Lecture::create($data);
 
