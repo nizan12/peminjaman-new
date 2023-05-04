@@ -39,7 +39,7 @@
       
     </ul>
     <div class="add-menu-sidebar">
-      <img src="http://test-peminjaman.test/images/calendar.png" alt="" class="mr-3">
+      <img src="{{ asset('images/calendar.png') }}" alt="" class="mr-3">
       <p class="	font-w500 mb-0">Cek kalender Aktifitas</p>
     </div>
     <div class="copyright">

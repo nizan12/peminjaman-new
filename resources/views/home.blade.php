@@ -1,7 +1,9 @@
 {{-- Extends layout --}}
 @extends('layouts.dashboard')
 
-
+@section('title')
+Dashboard
+@endsection
 
 {{-- Content --}}
 @section('content')

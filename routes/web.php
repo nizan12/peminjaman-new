@@ -1,17 +1,18 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ToolController;
+use App\Http\Controllers\DetailController;
+use App\Http\Controllers\Admin\RoomController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BannerController;
-use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\LectureController;
-use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductGalleryController;
-use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\ToolController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\DetailController;
 
 /*
 |--------------------------------------------------------------------------

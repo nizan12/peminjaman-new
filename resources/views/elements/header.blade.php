@@ -83,7 +83,7 @@
           </li>
           <li class="nav-item dropdown header-profile">
             <a class="nav-link" href="javascript:void(0)" role="button" data-toggle="dropdown">
-              <img src="http://test-peminjaman.test/images/profile/17.jpg" width="20" alt=""/>
+              <img src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}" width="20" alt=""/>
               <div class="header-info">
                 <span class="text-black"><strong>{{ Auth::user()->name }}</strong></span>
                 <p class="fs-12 mb-0">{{ Auth::user()->roles }}</p>
