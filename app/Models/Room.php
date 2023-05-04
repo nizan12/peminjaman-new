@@ -14,7 +14,7 @@ class Room extends Model
         'Tower A' => 'Tower A',
         'Tower B' => 'Tower B',
         'Teaching Factory' => 'Teaching Factory',
-        'Apartement' => 'Apartement',
+        'Apartment' => 'Apartment',
         'Technopreneur' => 'Technopreneur',
     ];
 
