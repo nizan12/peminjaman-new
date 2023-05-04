@@ -81,6 +81,7 @@
               </div>
             </div>
           </li>
+
           <li class="nav-item dropdown header-profile">
             <a class="nav-link" href="javascript:void(0)" role="button" data-toggle="dropdown">
               <img src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}" width="20" alt=""/>
@@ -98,11 +99,23 @@
                 <svg id="icon-inbox" xmlns="http://www.w3.org/2000/svg" class="text-success" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 <span class="ml-2">Inbox </span>
               </a>
-              <a href="{{ route('logout') }}" class="dropdown-item ai-icon">
+
+
+              <form action="{{ route('logout') }}" method="POST"> @csrf
+              <button role="button" type="submit" class="dropdown-item ai-icon">
                 <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
                 <span class="ml-2">Logout </span>
                 
-              </a>
+              </button>
+              </form>
+
+              {{-- <a href="#" class="dropdown-item ai-icon" data-toggle="modal" data-target="#logoutModal">
+                <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                <span class="ml-2">Logout </span>
+                
+              </a> --}}
+
+
             </div>
           </li>
         </ul>
@@ -110,3 +123,21 @@
     </nav>
   </div>
 </div>
+
+
+{{-- <div class="modal fade" id="logoutModal" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal"><span>×</span>
+              </button>
+          </div>
+          <div class="modal-body">Modal body text goes here.</div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+      </div>
+  </div>
+</div> --}}
