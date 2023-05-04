@@ -12,5 +12,6 @@ class Lecture extends Model
     protected $fillable = [
         'code',
         'name',
+        'nik',
     ];
 }
