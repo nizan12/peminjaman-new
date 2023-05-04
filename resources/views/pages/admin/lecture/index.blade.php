@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Matakuliah
+    Dosen
 @endsection
 
 @section('content')
@@ -23,6 +23,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Code</th>
+                                        <th>NIK</th>
                                         <th>Nama</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -52,6 +53,7 @@
         columns: [
             {data: 'id', name:'id'},
             {data: 'code', name:'code'},
+            {data: 'nik', name:'nik'},
             {data: 'name', name:'name'},
             {
                 data: 'action',
