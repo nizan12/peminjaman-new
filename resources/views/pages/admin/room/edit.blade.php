@@ -96,8 +96,18 @@ Edit Ruangan
                                 </div>
                                 <div class="row">
                                     <div class="col text-right">
-                                        <button class="btn btn-primary px-5">
-                                            Save now
+                                        <button type="button" class="btn btn-danger px-5"
+                                            onclick="window.location = '/room' ">
+                                            Cancel
+                                        </button>
+
+                                        <button type="reset" class="btn btn-warning px-5">
+                                            Reset
+                                        </button>
+
+
+                                        <button type="submit" class="btn btn-success px-5">
+                                            Sunting
                                         </button>
                                     </div>
                                 </div>
