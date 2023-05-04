@@ -47,8 +47,10 @@ var Gymove = function () {
 		});
 	}
 
-	var handleCurrentActive = function () {
+	// Origininal func handleCurrentActive
+	var handleCurrentActive3 = function () {
 		for (var nk = window.location,
+
 			o = $("ul#menu a").filter(function () {
 				return this.href == nk;
 			})
@@ -64,6 +66,27 @@ var Gymove = function () {
 				.addClass("mm-active");
 		}
 	}
+
+	var handleCurrentActive = function () {
+		var currentUrl = window.location.pathname.split('/')[1];
+
+		var menuLinks = $("ul#menu a").filter(function () {
+
+			if ($(this).attr("matchUrl")) {
+				return window.location.href == $(this).attr('href');
+			} else {
+				return $(this).attr('href').indexOf(currentUrl) !== -1;
+			}
+
+		});
+
+		menuLinks.addClass('mm-active');
+		menuLinks.parents('li').addClass('mm-active');
+		menuLinks.parents('ul').addClass('mm-show');
+		menuLinks.parents('li').parents('ul').addClass('mm-active');
+	};
+
+
 
 	var handleCustomFileInput = function () {
 		$(".custom-file-input").on("change", function () {
