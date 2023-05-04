@@ -22,8 +22,8 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Code</th>
-                                        <th>Nama</th>
+                                        <th>Kode Ruangan</th>
+                                        <th>Nama Ruangan</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
