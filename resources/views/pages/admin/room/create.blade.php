@@ -71,7 +71,7 @@ Tambah Ruangan
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Kapasitas Ruangan</label>
+                                            <label>Kapasitas Ruangan <small class="text-danger">*</small></label>
 
                                             <div class="input-group mb-2">
                                                 <input type="number" min="0" name="capacity" required
