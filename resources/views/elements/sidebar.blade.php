@@ -15,7 +15,7 @@
         <span class="nav-text">Peminjaman</span>
       </a>
         <ul aria-expanded="false">
-          <li><a href="http://test-peminjaman.test/ecom-product-grid1">Ruangan</a></li>
+          <li class=""><a href="{{ route('room-all') }}">Ruangan</a></li>
           <li class=""><a href="{{ route('tool-all') }}">Alat</a></li>
         </ul>
       </li>
