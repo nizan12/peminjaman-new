@@ -30,7 +30,7 @@ Tambah Ruangan
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Kode Ruangan <small class="text-danger">*</small></label>
-                                            <input type="text" name="code" value="{{ old('code') }}"
+                                            <input type="text" name="code" required value="{{ old('code') }}"
                                                 placeholder="Contoh : TA.XI.4a"
                                                 class="form-control @error('code') is-invalid @enderror">
 
@@ -43,7 +43,7 @@ Tambah Ruangan
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Nama Ruangan <small class="text-danger">*</small></label>
-                                            <input type="text" name="name" value="{{ old('name') }}"
+                                            <input type="text" name="name" required value="{{ old('name') }}"
                                                 placeholder="Contoh : Workspace Data Security and Privacy"
                                                 class="form-control @error('name') is-invalid @enderror">
 
@@ -56,14 +56,12 @@ Tambah Ruangan
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Gedung <small class="text-danger">*</small></label>
-                                            <select name="building"
-                                                class="form-control default-select @error('building') is-invalid @enderror">
+                                            <select name="building" required class="form-control default-select @error('building') is-invalid @enderror">
                                                 <option value="" selected disabled>- Pilih Gedung -</option>
-                                                <option value="Gedung Utama">Gedung Utama</option>
-                                                <option value="Teaching Factory">Teaching Factory</option>
-                                                <option value="Tower A">Tower A</option>
+                                                @foreach(\App\Models\Room::BUILDINGS as $key => $values)
+                                                    <option value="{{ $key }}">{{ $values }}</option>
+                                                @endforeach
                                             </select>
-
 
                                             @error('building')
                                             <small class="invalid-feedback">{{ $message }}</small>
@@ -75,10 +73,8 @@ Tambah Ruangan
                                         <div class="form-group">
                                             <label>Kapasitas Ruangan</label>
 
-
-
                                             <div class="input-group mb-2">
-                                                <input type="number" min="0" name="capacity"
+                                                <input type="number" min="0" name="capacity" required
                                                     value="{{ old('capacity') }}" placeholder="Contoh : 60"
                                                     class="form-control @error('capacity') is-invalid @enderror">
 
