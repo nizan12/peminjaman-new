@@ -1,21 +1,20 @@
+@extends('layouts.dashboard')
 
+@section('title')
+    Banner
+@endsection
+
+@section('content')
 <div
     class="section-content section-dashboard-home"
-    data-aos="fade-up"
     >
     <div class="container-fluid">
-        <div class="dashboard-heading">
-            <h2 class="dashboard-title">Banner</h2>
-            <p class="dashboard-subtitle">
-                List Banner
-            </p>
-        </div>
         <div class="dashboard-content">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            <a href="{{ route('banner.create') }}" class="btn btn-primary mb-3">
+                            <a href="{{ route('banner.create') }}" class="float-right btn btn-primary mb-3">
                             + Tambah Banner Baru</a>
                             <div class="table-responsive">
                             <table class="table table-hover scroll-horizontal-vertical w-100" id="crudTable">
@@ -24,6 +23,7 @@
                                         <th>ID</th>
                                         <th>Foto</th>
                                         <th>Tampilkan</th>
+                                        <th>Slug</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -38,6 +38,10 @@
     </div>
 </div>
 
+
+@endsection
+
+@push('addon-scripts')
 <script>
     var datatable = $('#crudTable').DataTable({
         processing: true,
@@ -48,9 +52,9 @@
         },
         columns: [
             {data: 'id', name:'id'},
-            {data: 'name', name:'name'},
+            {data: 'photo', name:'name'},
             {data: 'photo', name:'photo'},
-            {data: 'slug', name:'slug'},
+            {data: 'photo', name:'slug'},
             {
                 data: 'action',
                 name: 'action',
@@ -61,3 +65,4 @@
         ]
     })
 </script>
+@endpush
