@@ -98,6 +98,7 @@ class LectureController extends Controller
     {
         $data['code'] = $request->code;
         $data['name'] = $request->name;
+        $data['nik'] = $request->nik;
 
         $item = Lecture::findOrFail($id);
 
