@@ -24,6 +24,7 @@ class LectureRequest extends FormRequest
         return [
             'code' =>  'required|max:255',
             'name' =>  'required|max:255',
+            'nik' =>  'required|max:100',
         ];
     }
 }
