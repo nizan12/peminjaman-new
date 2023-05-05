@@ -87,6 +87,29 @@ var Gymove = function () {
 	};
 
 
+	// New Not Perfect
+	var handleCurrentActive2 = function () {
+		var serverName = window.location.origin;
+		var currentUrl = window.location.pathname.split( serverName ).slice(-1)[0];
+
+		console.log( currentUrl );
+		var menuLinks = $("ul#menu a").filter(function () {
+			var currenthref = $(this).attr('href').split( serverName ).slice(-1)[0];
+			if ( $(this).attr("matchUrl")) {
+				return window.location.href == $(this).attr('href');
+			} else {
+				return currenthref.indexOf(currentUrl) !== -1;
+			}
+
+		});
+
+		menuLinks.addClass('mm-active');
+		menuLinks.parents('li').addClass('mm-active');
+		menuLinks.parents('ul').addClass('mm-show');
+		menuLinks.parents('li').parents('ul').addClass('mm-active');
+	};
+
+
 
 	var handleCustomFileInput = function () {
 		$(".custom-file-input").on("change", function () {
