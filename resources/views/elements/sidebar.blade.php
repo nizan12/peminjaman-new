@@ -30,7 +30,7 @@
           <li><a href="{{ route('category.index') }}">Kategori</a></li>
           <li><a href="{{ route('course.index') }}">Matakuliah</a></li>
           <li><a href="{{ route('lecture.index') }}">Dosen</a></li>
-          <li><a href="{{ route('room.index') }}" matchUrl="true">Ruangan</a></li>
+          <li><a href="{{ route('room.index') }}">Ruangan</a></li>
           <li><a href="{{ route('product.index') }}">Produk</a></li>
           <li><a href="{{ route('product-gallery.index') }}">Galeri Produk</a></li>
           <li><a href="{{ route('user.index') }}">User</a></li>
