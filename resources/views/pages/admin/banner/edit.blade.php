@@ -1,6 +1,15 @@
+@extends('layouts.dashboard')
+
+
+@section('title')
+Edit Banner
+@endsection
+
+{{-- Content --}}
+@section('content')
+
 <div
     class="section-content section-dashboard-home"
-    data-aos="fade-up"
     >
     <div class="container-fluid">
         <div class="dashboard-heading">
@@ -33,10 +42,15 @@
                                             <input type="file" name="photo" class="form-control">
                                         </div>
                                     </div>
+
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>Tampilkan</label>
-                                            <input type="checkbox" name="is_show" @if ($item->is_show) checked='true' @endif class="form-control">
+                                            <div class="form-check">
+                                                <input name="is_show" class="form-check-input" type="checkbox" @if ($item->is_show) checked='true' @endif>
+                                                <label class="form-check-label">
+                                                    Tampilkan Gambar
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -55,3 +69,5 @@
         </div>
     </div>
 </div>
+
+@endsection
