@@ -111,7 +111,7 @@ class ProductController extends Controller
         $item = Product::findOrFail($id);
         $users = User::all();
         $categories = Category::all();
-        $roomsa = Room::all();
+        // $roomsa = Room::all();
 
         // Room Grouping
         $rooms = Room::all()->groupBy('building');
@@ -122,7 +122,7 @@ class ProductController extends Controller
             'users' => $users,
             'categories' => $categories,
             'rooms' => $rooms,
-            'roomsa' => $roomsa
+            // 'roomsa' => $roomsa
         ]);
     }
 
