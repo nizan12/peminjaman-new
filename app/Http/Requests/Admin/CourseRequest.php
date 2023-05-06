@@ -24,6 +24,7 @@ class CourseRequest extends FormRequest
         return [
             'code' =>  'required|max:255',
             'name' =>  'required|max:255',
+            'prodi' =>  'required',
         ];
     }
 }
