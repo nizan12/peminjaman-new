@@ -55,7 +55,8 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.course.create');
+
+        return view('pages.admin.course.create', ['JURUSAN_PRODI' => Course::JURUSAN_PRODI]);
     }
 
     /**
@@ -65,6 +66,7 @@ class CourseController extends Controller
     {
         $data['code'] = $request->code;
         $data['name'] = $request->name;
+        $data['prodi'] = $request->prodi;
 
         Course::create($data);
 
@@ -86,7 +88,8 @@ class CourseController extends Controller
     {
         $item = Course::findOrFail($id);
         return view('pages.admin.course.edit', [
-            'item' => $item
+            'item' => $item,
+            'JURUSAN_PRODI' => Course::JURUSAN_PRODI
         ]);
     }
 
@@ -97,6 +100,7 @@ class CourseController extends Controller
     {
         $data['code'] = $request->code;
         $data['name'] = $request->name;
+        $data['prodi'] = $request->prodi;
 
         $item = Course::findOrFail($id);
 
