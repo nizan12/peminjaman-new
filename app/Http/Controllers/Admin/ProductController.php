@@ -64,6 +64,9 @@ class ProductController extends Controller
         $categories = Category::all();
         $rooms = Room::all();
 
+        // Room Grouping
+        $rooms = Room::all()->groupBy('building');
+
         return view('pages.admin.product.create', [
             'users' => $users,
             'categories' => $categories,
@@ -108,13 +111,18 @@ class ProductController extends Controller
         $item = Product::findOrFail($id);
         $users = User::all();
         $categories = Category::all();
-        $rooms = Room::all();
+        $roomsa = Room::all();
+
+        // Room Grouping
+        $rooms = Room::all()->groupBy('building');
+
 
         return view('pages.admin.product.edit', [
             'item' => $item,
             'users' => $users,
             'categories' => $categories,
             'rooms' => $rooms,
+            'roomsa' => $roomsa
         ]);
     }
 
