@@ -17,11 +17,10 @@ class ProductGalleryController extends Controller
      */
     public function index()
     {
-        if(request()->ajax())
-        {
+        if (request()->ajax()) {
             $query = ProductGallery::query();
             return DataTables::of($query)
-                ->addcolumn('action', function($item) {
+                ->addcolumn('action', function ($item) {
                     return '
                         <div class="btn-group">
                             <div class="dropdown">
@@ -31,8 +30,8 @@ class ProductGalleryController extends Controller
                                         Aksi
                                 </button>
                                 <div class="dropdown-menu">
-                                    <form action="'. route('product-gallery.destroy', $item->id) .'" method="POST">
-                                        ' . method_field('delete') . csrf_field() .'    
+                                    <form action="' . route('product-gallery.destroy', $item->id) . '" method="POST">
+                                        ' . method_field('delete') . csrf_field() . '    
                                         <button type="submit" class="dropdown-item text-danger">
                                             Hapus
                                         </button>
@@ -43,10 +42,10 @@ class ProductGalleryController extends Controller
                     ';
                 })
 
-                ->editColumn('photos', function ($item){
-                    return $item->photos ? '<img src="'. Storage::url($item->photos) .'" style="max-height: 50px;" />' : '';
+                ->editColumn('photos', function ($item) {
+                    return $item->photos ? '<img src="' . Storage::url($item->photos) . '" style="max-height: 50px;" />' : '';
                 })
-                ->rawColumns(['action','photos'])
+                ->rawColumns(['action', 'photos'])
                 ->make();
         }
 
@@ -71,7 +70,7 @@ class ProductGalleryController extends Controller
     public function store(ProductGalleryRequest $request)
     {
         $data['products_id'] = $request->products_id;
-        $data['photos'] = $request->file('photos')->store('assets/gallery','public');
+        $data['photos'] = $request->file('photos')->store('assets/gallery', 'public');
 
         ProductGallery::create($data);
 
@@ -84,6 +83,15 @@ class ProductGalleryController extends Controller
     public function destroy(string $id)
     {
         $item = ProductGallery::findOrFail($id);
+
+        $photos = $item->photos;
+
+        // hapus file dari direktori public
+        $public_path = public_path(Storage::url($item->photos));
+        if (!empty($photos) && file_exists($public_path)) {
+            unlink($public_path);
+        }
+
         $item->delete();
 
         return redirect()->route('product-gallery.index');
