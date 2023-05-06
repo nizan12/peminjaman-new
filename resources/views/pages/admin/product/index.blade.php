@@ -27,6 +27,7 @@
                                         <th>Stok</th>
                                         <th>Lokasi</th>
                                         <th>Kondisi</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
