@@ -53,7 +53,7 @@
             columns: [
                 {data: 'id', name:'id'},
                 {data: 'products_id', name:'products_id'},
-                {data: 'photo', name:'photo'},
+                {data: 'photos', name:'photos'},
                 {
                     data: 'action',
                     name: 'action',

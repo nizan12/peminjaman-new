@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\ProductGallery;
 use Yajra\DataTables\DataTables;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Admin\ProductGalleryRequest;
-use App\Models\Product;
 
 class ProductGalleryController extends Controller
 {
@@ -42,7 +43,10 @@ class ProductGalleryController extends Controller
                     ';
                 })
 
-                ->rawColumns(['action'])
+                ->editColumn('photos', function ($item){
+                    return $item->photos ? '<img src="'. Storage::url($item->photos) .'" style="max-height: 50px;" />' : '';
+                })
+                ->rawColumns(['action','photos'])
                 ->make();
         }
 
