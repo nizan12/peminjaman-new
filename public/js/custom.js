@@ -113,7 +113,13 @@ var Gymove = function () {
 
 	var handleCustomFileInput = function () {
 		$(".custom-file-input").on("change", function () {
+			
 			var fileName = $(this).val().split("\\").pop();
+			var oldLabel = $(this).siblings(".custom-file-label").text();
+
+			if ( fileName == '' ) {
+				fileName = oldLabel ? oldLabel : 'Choose file';
+			}
 			$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 		});
 	}
