@@ -55,8 +55,9 @@ Tambah Matakuliah
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Program Studi <b class="text-danger">*</b></label>
-                                            <select name="prodi" class="form-control default-select @error('prodi') is-invalid @enderror">
-                                                <option value="">- Pilih Program Studi-</option>
+                                            <select name="prodi"
+                                                class="form-control default-select @error('prodi') is-invalid @enderror">
+                                                <option value="">- Pilih Program Studi -</option>
                                                 @foreach ($JURUSAN_PRODI as $jurusan => $prodi)
                                                 <optgroup label="{{ $jurusan }}">
                                                     @foreach ($prodi as $p)
@@ -70,11 +71,11 @@ Tambah Matakuliah
                                             @error('prodi')
                                             <small class="invalid-feedback">{{ $message }}</small>
                                             @enderror
-
-
                                         </div>
 
                                     </div>
+
+
                                 </div>
                                 <div class="row">
                                     <div class="col text-right">
