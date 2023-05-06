@@ -24,6 +24,7 @@
                                             <th>ID</th>
                                             <th>Code</th>
                                             <th>Nama</th>
+                                            <th>Prodi</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -53,6 +54,7 @@
             {data: 'id', name:'id'},
             {data: 'code', name:'code'},
             {data: 'name', name:'name'},
+            {data: 'prodi', name:'prodi'},
             {
                 data: 'action',
                 name: 'action',
