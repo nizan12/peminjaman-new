@@ -12,6 +12,13 @@ use App\Http\Requests\Admin\ProductGalleryRequest;
 
 class ProductGalleryController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     /**
      * Display a listing of the resource.
      */
