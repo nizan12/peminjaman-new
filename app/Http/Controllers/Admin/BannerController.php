@@ -127,6 +127,8 @@ class BannerController extends Controller
     public function destroy(string $id)
     {
         $item = Banner::findOrFail($id);
+
+
         $item->delete();
 
         return redirect()->route('banner.index');
