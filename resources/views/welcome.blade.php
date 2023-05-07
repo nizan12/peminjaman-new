@@ -15,7 +15,9 @@
     <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
@@ -44,15 +46,15 @@
     <header id="header" class="fixed-top d-flex align-items-center">
         <div class="container d-flex align-items-center justify-content-between">
 
-            <div class="logo" >
+            <div class="logo">
                 {{-- <h1><a href="index.html">Vesperr</a></h1> --}}
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <a href="/">
-                    <img src="/images/logo.png" alt="" class="img-fluid" >
-                    <img src="/images/logo-text.png" alt="" class="img-fluid" >
+                    <img src="/images/logo.png" alt="" class="img-fluid">
+                    <img src="/images/logo-text.png" alt="" class="img-fluid">
                 </a>
 
-                
+
 
             </div>
 
@@ -65,7 +67,8 @@
                     {{-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="#">Drop Down 1</a></li>
-                            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i
+                                        class="bi bi-chevron-right"></i></a>
                                 <ul>
                                     <li><a href="#">Deep Drop Down 1</a></li>
                                     <li><a href="#">Deep Drop Down 2</a></li>
@@ -79,8 +82,25 @@
                             <li><a href="#">Drop Down 4</a></li>
                         </ul>
                     </li> --}}
-                    <li><a class="nav-link scrollto" href="/register">Register</a></li>
-                    <li><a class="getstarted scrollto" href="/login">Login</a></li>
+
+                    @if (Route::has('login'))
+                    <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
+                        @auth
+                        <li><a class="getstarted scrollto" href="/home">Dashboard</a></li>
+                        @else
+
+                        @if (Route::has('register'))
+                        <li><a class="nav-link scrollto" href="/register">Register</a></li>
+                        @endif
+
+                        <li><a class="getstarted scrollto" href="/login">Login</a></li>
+
+                        @endauth
+                    </div>
+                    @endif
+
+
+
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
@@ -95,7 +115,8 @@
             <div class="row">
                 <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
                     <h1 data-aos="fade-up">Grow your business with Vesperr</h1>
-                    <h2 data-aos="fade-up" data-aos-delay="400">We are team of talented designers making websites with Bootstrap</h2>
+                    <h2 data-aos="fade-up" data-aos-delay="400">We are team of talented designers making websites with
+                        Bootstrap</h2>
                     <div data-aos="fade-up" data-aos-delay="800">
                         <a href="#about" class="btn-get-started scrollto">Get Started</a>
                     </div>
@@ -121,23 +142,28 @@
                     </div>
 
                     <div class="col-lg-2 col-md-4 col-6">
-                        <img src="/assets/img/clients/client-2.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="/assets/img/clients/client-2.png" class="img-fluid" alt="" data-aos="zoom-in"
+                            data-aos-delay="100">
                     </div>
 
                     <div class="col-lg-2 col-md-4 col-6">
-                        <img src="/assets/img/clients/client-3.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="/assets/img/clients/client-3.png" class="img-fluid" alt="" data-aos="zoom-in"
+                            data-aos-delay="200">
                     </div>
 
                     <div class="col-lg-2 col-md-4 col-6">
-                        <img src="/assets/img/clients/client-4.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="300">
+                        <img src="/assets/img/clients/client-4.png" class="img-fluid" alt="" data-aos="zoom-in"
+                            data-aos-delay="300">
                     </div>
 
                     <div class="col-lg-2 col-md-4 col-6">
-                        <img src="/assets/img/clients/client-5.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="400">
+                        <img src="/assets/img/clients/client-5.png" class="img-fluid" alt="" data-aos="zoom-in"
+                            data-aos-delay="400">
                     </div>
 
                     <div class="col-lg-2 col-md-4 col-6">
-                        <img src="/assets/img/clients/client-6.png" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="500">
+                        <img src="/assets/img/clients/client-6.png" class="img-fluid" alt="" data-aos="zoom-in"
+                            data-aos-delay="500">
                     </div>
 
                 </div>
@@ -156,19 +182,25 @@
                 <div class="row content">
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="150">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore
                             magna aliqua.
                         </p>
                         <ul>
-                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-                            <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat</li>
+                            <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate
+                                velit</li>
+                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat</li>
                         </ul>
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-up" data-aos-delay="300">
                         <p>
-                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                            reprehenderit in voluptate
+                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                            proident, sunt in
                             culpa qui officia deserunt mollit anim id est laborum.
                         </p>
                         <a href="#" class="btn-learn-more">Learn More</a>
@@ -183,42 +215,52 @@
             <div class="container">
 
                 <div class="row">
-                    <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-xl-start" data-aos="fade-right" data-aos-delay="150">
+                    <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-xl-start"
+                        data-aos="fade-right" data-aos-delay="150">
                         <img src="/assets/img/counts-img.svg" alt="" class="img-fluid">
                     </div>
 
-                    <div class="col-xl-7 d-flex align-items-stretch pt-4 pt-xl-0" data-aos="fade-left" data-aos-delay="300">
+                    <div class="col-xl-7 d-flex align-items-stretch pt-4 pt-xl-0" data-aos="fade-left"
+                        data-aos-delay="300">
                         <div class="content d-flex flex-column justify-content-center">
                             <div class="row">
                                 <div class="col-md-6 d-md-flex align-items-md-stretch">
                                     <div class="count-box">
                                         <i class="bi bi-emoji-smile"></i>
-                                        <span data-purecounter-start="0" data-purecounter-end="65" data-purecounter-duration="1" class="purecounter"></span>
-                                        <p><strong>Happy Clients</strong> consequuntur voluptas nostrum aliquid ipsam architecto ut.</p>
+                                        <span data-purecounter-start="0" data-purecounter-end="65"
+                                            data-purecounter-duration="1" class="purecounter"></span>
+                                        <p><strong>Happy Clients</strong> consequuntur voluptas nostrum aliquid ipsam
+                                            architecto ut.</p>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6 d-md-flex align-items-md-stretch">
                                     <div class="count-box">
                                         <i class="bi bi-journal-richtext"></i>
-                                        <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="1" class="purecounter"></span>
-                                        <p><strong>Projects</strong> adipisci atque cum quia aspernatur totam laudantium et quia dere tan</p>
+                                        <span data-purecounter-start="0" data-purecounter-end="85"
+                                            data-purecounter-duration="1" class="purecounter"></span>
+                                        <p><strong>Projects</strong> adipisci atque cum quia aspernatur totam laudantium
+                                            et quia dere tan</p>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6 d-md-flex align-items-md-stretch">
                                     <div class="count-box">
                                         <i class="bi bi-clock"></i>
-                                        <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1" class="purecounter"></span>
-                                        <p><strong>Years of experience</strong> aut commodi quaerat modi aliquam nam ducimus aut voluptate non vel</p>
+                                        <span data-purecounter-start="0" data-purecounter-end="18"
+                                            data-purecounter-duration="1" class="purecounter"></span>
+                                        <p><strong>Years of experience</strong> aut commodi quaerat modi aliquam nam
+                                            ducimus aut voluptate non vel</p>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6 d-md-flex align-items-md-stretch">
                                     <div class="count-box">
                                         <i class="bi bi-award"></i>
-                                        <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-                                        <p><strong>Awards</strong> rerum asperiores dolor alias quo reprehenderit eum et nemo pad der</p>
+                                        <span data-purecounter-start="0" data-purecounter-end="15"
+                                            data-purecounter-duration="1" class="purecounter"></span>
+                                        <p><strong>Awards</strong> rerum asperiores dolor alias quo reprehenderit eum et
+                                            nemo pad der</p>
                                     </div>
                                 </div>
                             </div>
@@ -243,7 +285,8 @@
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
                             <div class="icon"><i class="bx bxl-dribbble"></i></div>
                             <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-                            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias
+                                excepturi</p>
                         </div>
                     </div>
 
@@ -251,7 +294,8 @@
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
                             <div class="icon"><i class="bx bx-file"></i></div>
                             <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-                            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+                            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                                dolore</p>
                         </div>
                     </div>
 
@@ -259,7 +303,8 @@
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
                             <div class="icon"><i class="bx bx-tachometer"></i></div>
                             <h4 class="title"><a href="">Magni Dolores</a></h4>
-                            <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+                            <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                                officia</p>
                         </div>
                     </div>
 
@@ -267,7 +312,8 @@
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
                             <div class="icon"><i class="bx bx-world"></i></div>
                             <h4 class="title"><a href="">Nemo Enim</a></h4>
-                            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+                            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui
+                                blanditiis</p>
                         </div>
                     </div>
 
@@ -282,38 +328,46 @@
 
                 <div class="row">
                     <div class="col-md-6 d-flex align-items-stretch">
-                        <div class="card" style='background-image: url("/assets/img/more-services-1.jpg");' data-aos="fade-up" data-aos-delay="100">
+                        <div class="card" style='background-image: url("/assets/img/more-services-1.jpg");'
+                            data-aos="fade-up" data-aos-delay="100">
                             <div class="card-body">
                                 <h5 class="card-title"><a href="">Lobira Duno</a></h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua.</p>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor
+                                    ut labore et dolore magna aliqua.</p>
                                 <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a></div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-                        <div class="card" style='background-image: url("/assets/img/more-services-2.jpg");' data-aos="fade-up" data-aos-delay="200">
+                        <div class="card" style='background-image: url("/assets/img/more-services-2.jpg");'
+                            data-aos="fade-up" data-aos-delay="200">
                             <div class="card-body">
                                 <h5 class="card-title"><a href="">Limere Radses</a></h5>
-                                <p class="card-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem doloremque laudantium, totam rem.</p>
+                                <p class="card-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                    doloremque laudantium, totam rem.</p>
                                 <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a></div>
                             </div>
                         </div>
 
                     </div>
                     <div class="col-md-6 d-flex align-items-stretch mt-4">
-                        <div class="card" style='background-image: url("/assets/img/more-services-3.jpg");' data-aos="fade-up" data-aos-delay="100">
+                        <div class="card" style='background-image: url("/assets/img/more-services-3.jpg");'
+                            data-aos="fade-up" data-aos-delay="100">
                             <div class="card-body">
                                 <h5 class="card-title"><a href="">Nive Lodo</a></h5>
-                                <p class="card-text">Nemo enim ipsam voluptatem quia voluptas sit aut odit aut fugit, sed quia magni dolores.</p>
+                                <p class="card-text">Nemo enim ipsam voluptatem quia voluptas sit aut odit aut fugit,
+                                    sed quia magni dolores.</p>
                                 <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a></div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 d-flex align-items-stretch mt-4">
-                        <div class="card" style='background-image: url("/assets/img/more-services-4.jpg");' data-aos="fade-up" data-aos-delay="200">
+                        <div class="card" style='background-image: url("/assets/img/more-services-4.jpg");'
+                            data-aos="fade-up" data-aos-delay="200">
                             <div class="card-body">
                                 <h5 class="card-title"><a href="">Pale Treda</a></h5>
-                                <p class="card-text">Nostrum eum sed et autem dolorum perspiciatis. Magni porro quisquam laudantium voluptatem.</p>
+                                <p class="card-text">Nostrum eum sed et autem dolorum perspiciatis. Magni porro quisquam
+                                    laudantium voluptatem.</p>
                                 <div class="read-more"><a href="#"><i class="bi bi-arrow-right"></i> Read More</a></div>
                             </div>
                         </div>
@@ -425,12 +479,15 @@
                         <div class="swiper-slide">
                             <div class="testimonial-wrap">
                                 <div class="testimonial-item">
-                                    <img src="/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                                    <img src="/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img"
+                                        alt="">
                                     <h3>Saul Goodman</h3>
                                     <h4>Ceo &amp; Founder</h4>
                                     <p>
                                         <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                        Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                                        Proin iaculis purus consequat sem cure digni ssim donec porttitora entum
+                                        suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et.
+                                        Maecen aliquam, risus at semper.
                                         <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                     </p>
                                 </div>
@@ -440,12 +497,15 @@
                         <div class="swiper-slide">
                             <div class="testimonial-wrap">
                                 <div class="testimonial-item">
-                                    <img src="/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                                    <img src="/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img"
+                                        alt="">
                                     <h3>Sara Wilsson</h3>
                                     <h4>Designer</h4>
                                     <p>
                                         <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                        Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                                        Export tempor illum tamen malis malis eram quae irure esse labore quem cillum
+                                        quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat
+                                        irure amet legam anim culpa.
                                         <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                     </p>
                                 </div>
@@ -455,12 +515,15 @@
                         <div class="swiper-slide">
                             <div class="testimonial-wrap">
                                 <div class="testimonial-item">
-                                    <img src="/assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+                                    <img src="/assets/img/testimonials/testimonials-3.jpg" class="testimonial-img"
+                                        alt="">
                                     <h3>Jena Karlis</h3>
                                     <h4>Store Owner</h4>
                                     <p>
                                         <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                        Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                                        Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem
+                                        veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis
+                                        sint minim.
                                         <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                     </p>
                                 </div>
@@ -470,12 +533,15 @@
                         <div class="swiper-slide">
                             <div class="testimonial-wrap">
                                 <div class="testimonial-item">
-                                    <img src="/assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+                                    <img src="/assets/img/testimonials/testimonials-4.jpg" class="testimonial-img"
+                                        alt="">
                                     <h3>Matt Brandon</h3>
                                     <h4>Freelancer</h4>
                                     <p>
                                         <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                        Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                                        Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim
+                                        fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore
+                                        quem dolore labore illum veniam.
                                         <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                     </p>
                                 </div>
@@ -485,12 +551,15 @@
                         <div class="swiper-slide">
                             <div class="testimonial-wrap">
                                 <div class="testimonial-item">
-                                    <img src="/assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                                    <img src="/assets/img/testimonials/testimonials-5.jpg" class="testimonial-img"
+                                        alt="">
                                     <h3>John Larson</h3>
                                     <h4>Entrepreneur</h4>
                                     <p>
                                         <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                                        Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                                        Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor
+                                        noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam
+                                        esse veniam culpa fore nisi cillum quid.
                                         <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                                     </p>
                                 </div>
@@ -533,7 +602,8 @@
                                 <h4>App 1</h4>
                                 <p>App</p>
                                 <div class="portfolio-links">
-                                    <a href="/assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                                    <a href="/assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
                                     <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                                 </div>
                             </div>
@@ -547,7 +617,8 @@
                                 <h4>Web 3</h4>
                                 <p>Web</p>
                                 <div class="portfolio-links">
-                                    <a href="/assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                                    <a href="/assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
                                     <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                                 </div>
                             </div>
@@ -561,7 +632,8 @@
                                 <h4>App 2</h4>
                                 <p>App</p>
                                 <div class="portfolio-links">
-                                    <a href="/assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
+                                    <a href="/assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
                                     <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                                 </div>
                             </div>
@@ -575,7 +647,8 @@
                                 <h4>Card 2</h4>
                                 <p>Card</p>
                                 <div class="portfolio-links">
-                                    <a href="/assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
+                                    <a href="/assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
                                     <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                                 </div>
                             </div>
@@ -589,7 +662,8 @@
                                 <h4>Web 2</h4>
                                 <p>Web</p>
                                 <div class="portfolio-links">
-                                    <a href="/assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
+                                    <a href="/assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
                                     <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                                 </div>
                             </div>
@@ -603,7 +677,8 @@
                                 <h4>App 3</h4>
                                 <p>App</p>
                                 <div class="portfolio-links">
-                                    <a href="/assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
+                                    <a href="/assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
                                     <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                                 </div>
                             </div>
@@ -617,7 +692,8 @@
                                 <h4>Card 1</h4>
                                 <p>Card</p>
                                 <div class="portfolio-links">
-                                    <a href="/assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
+                                    <a href="/assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
                                     <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                                 </div>
                             </div>
@@ -631,7 +707,8 @@
                                 <h4>Card 3</h4>
                                 <p>Card</p>
                                 <div class="portfolio-links">
-                                    <a href="/assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
+                                    <a href="/assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
                                     <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                                 </div>
                             </div>
@@ -645,7 +722,8 @@
                                 <h4>Web 3</h4>
                                 <p>Web</p>
                                 <div class="portfolio-links">
-                                    <a href="/assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
+                                    <a href="/assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
                                     <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
                                 </div>
                             </div>
@@ -758,15 +836,17 @@
                     </div>
 
                     <div class="credits">
-                        Designed &amp; Developed by <a href="https:/if.polibatam.ac.id/" target="_blank">Teknik Informatika</a> 2021</p>
+                        Designed &amp; Developed by <a href="https:/if.polibatam.ac.id/" target="_blank">Teknik
+                            Informatika</a> 2021</p>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </footer><!-- End Footer -->
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>

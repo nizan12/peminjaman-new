@@ -7,6 +7,7 @@
           <span class="nav-text">Dashboard</span>
         </a>
         <ul aria-expanded="false">
+          <li><a href="/">Home</a></li>
           <li><a href="{{ route('home') }}">Dashboard</a></li>
         </ul>
       </li>
