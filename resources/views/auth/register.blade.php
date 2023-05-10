@@ -1,10 +1,27 @@
-@extends('layouts.app')
+@extends('layouts.home')
 
 @section('title')
-Register
+Login
 @endsection
 
 @section('content')
+
+<!-- ======= Breadcrumbs Section ======= -->
+<section class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Register</h2>
+            <ol>
+                <li><a href="/">Home</a></li>
+                <li>Register</li>
+            </ol>
+        </div>
+
+    </div>
+</section><!-- End Breadcrumbs Section -->
+
+<section class="inner-page">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -78,4 +95,5 @@ Register
         </div>
     </div>
 </div>
+</section>
 @endsection
