@@ -63,7 +63,7 @@
         <ul>
           <li><a class="nav-link scrollto" href="/#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="/#about">About</a></li>
-          <li><a class="nav-link scrollto" href="/#services">Ruangan</a></li>
+          <li><a class="nav-link scrollto" href="/list-ruangan">Ruangan</a></li>
           <li><a class="nav-link scrollto " href="/#portfolio">Alat Praktikum</a></li>
           {{-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
