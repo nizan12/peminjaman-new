@@ -44,3 +44,5 @@ Route::resource('room', RoomController::class);
 Route::resource('product', ProductController::class);
 Route::resource('product-gallery', ProductGalleryController::class);
 Route::resource('user', UserController::class);
+
+Route::get('/list-ruangan', [RoomController::class, 'list_ruangan'])->name('list-ruangan');

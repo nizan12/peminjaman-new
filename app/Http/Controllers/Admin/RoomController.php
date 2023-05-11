@@ -12,6 +12,13 @@ use App\Http\Requests\Admin\RoomRequest;
 
 class RoomController extends Controller
 {
+
+    public function list_ruangan() {
+
+        $ruangan = Room::all();
+        return view('list-ruangan', ['ruangan' => $ruangan]);
+    }
+
     /**
      * Display a listing of the resource.
      */
