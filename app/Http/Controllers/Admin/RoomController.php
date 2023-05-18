@@ -10,13 +10,28 @@ use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\RoomRequest;
 
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
+
 class RoomController extends Controller
 {
 
-    public function list_ruangan() {
+    public function list_ruangan(Request $request) {
 
-        $ruangan = Room::all();
-        return view('list-ruangan', ['ruangan' => $ruangan]);
+        $building = $request->input('building');
+
+        $query = Room::query();
+    
+        if ($building && $building != 'Semua Gedung') {
+            $query->where('building', $building);
+        }
+    
+        $ruangan = $query->simplePaginate(10);
+
+
+        $buildingOptions = Room::BUILDINGS;
+        
+        return view('list-ruangan', ['ruangan' => $ruangan, 'buildingOptions' => $buildingOptions]);
     }
 
     /**
