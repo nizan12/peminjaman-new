@@ -29,6 +29,8 @@
         <ul aria-expanded="false">
           <li><a href="{{ route('banner.index') }}">Banner</a></li>
           <li><a href="{{ route('category.index') }}">Kategori</a></li>
+
+          <li><a href="{{ route('class.index') }}">Kelas</a></li>
           <li><a href="{{ route('course.index') }}">Matakuliah</a></li>
           <li><a href="{{ route('lecture.index') }}">Dosen</a></li>
           <li><a href="{{ route('room.index') }}">Ruangan</a></li>
@@ -37,6 +39,8 @@
           <li><a href="{{ route('user.index') }}">User</a></li>
         </ul>
       </li>
+
+      
       
     </ul>
     <div class="add-menu-sidebar">

@@ -7,6 +7,7 @@ use App\Http\Controllers\ToolController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ClassController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\LectureController;
@@ -46,3 +47,5 @@ Route::resource('product-gallery', ProductGalleryController::class);
 Route::resource('user', UserController::class);
 
 Route::get('/list-ruangan', [RoomController::class, 'list_ruangan'])->name('list-ruangan');
+
+Route::resource('class', ClassController::class);
