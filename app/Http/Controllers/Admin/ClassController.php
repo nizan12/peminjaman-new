@@ -28,10 +28,10 @@ class ClassController extends Controller
                                         Aksi
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="' . route('course.edit', $item->id) . '">
+                                    <a class="dropdown-item" href="' . route('class.edit', $item->id) . '">
                                         Sunting
                                     </a>
-                                    <form action="'. route('course.destroy', $item->id) .'" method="POST">
+                                    <form action="'. route('class.destroy', $item->id) .'" method="POST">
                                         ' . method_field('delete') . csrf_field() .'    
                                         <button type="submit" class="dropdown-item text-danger">
                                             Hapus
@@ -47,7 +47,7 @@ class ClassController extends Controller
                 ->make();
         }
 
-        return view('pages.admin.course.index');
+        return view('pages.admin.class.index');
     }
 
     /**
@@ -56,7 +56,7 @@ class ClassController extends Controller
     public function create()
     {
 
-        return view('pages.admin.course.create', ['JURUSAN_PRODI' => Course::JURUSAN_PRODI]);
+        return view('pages.admin.class.create', ['JURUSAN_PRODI' => Course::JURUSAN_PRODI]);
     }
 
     /**
