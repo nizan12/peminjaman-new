@@ -34,7 +34,7 @@
                                     </div>
                                 </div>
 
-                                <a href="{{ $searchMatakuliah ? '/course-schedule/create?course=' . $searchMatakuliah : url('/course-schedule/create') }}" class="float-right btn btn-primary mb-3">
+                                <a href="{{ $searchMatakuliah ? '/schedule/create?course=' . $searchMatakuliah : url('/schedule/create') }}" class="float-right btn btn-primary mb-3">
                                 + Tambah</a>
                                 <div class="table-responsive">
                                 <table class="table table-hover scroll-horizontal-vertical w-100" id="crudTable">

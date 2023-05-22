@@ -28,7 +28,7 @@ class CourseController extends Controller
                                         Aksi
                                 </button>
                                 <div class="dropdown-menu">
-                                <a class="dropdown-item" href="' . route('course-schedule.index') . '?course=' .$item->id. '">
+                                <a class="dropdown-item" href="' . route('schedule.index') . '?course=' .$item->id. '">
                                         Jadwal
                                     </a>
                                     <div class="dropdown-divider"></div>

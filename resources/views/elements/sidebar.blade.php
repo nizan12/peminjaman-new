@@ -32,7 +32,7 @@
 
           <li><a href="{{ route('class.index') }}">Kelas</a></li>
           <li><a href="{{ route('course.index') }}">Matakuliah</a></li>
-          <li><a href="{{ route('course-schedule.index') }}" matchUrl="true">Jadwal Matakuliah</a></li>
+          <li><a href="{{ route('schedule.index') }}">Jadwal Matakuliah</a></li>
           <li><a href="{{ route('lecture.index') }}">Dosen</a></li>
           <li><a href="{{ route('room.index') }}">Ruangan</a></li>
           <li><a href="{{ route('product.index') }}" >Produk</a></li>

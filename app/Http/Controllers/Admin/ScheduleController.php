@@ -14,7 +14,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Admin\ProductGalleryRequest;
 
-class CourseScheduleController extends Controller
+class ScheduleController extends Controller
 {
 
     public function __construct()
@@ -28,8 +28,14 @@ class CourseScheduleController extends Controller
      */
     public function index( Request $request )
     {
+
+        $searchMatakuliah = $request->input('course') ?? null;
+        $selectedMatakuliah = $searchMatakuliah ? Course::findOrFail($searchMatakuliah ) : null;
+
         if (request()->ajax()) {
-            $query = ProductGallery::query();
+            $query = CourseSchedule::where();
+            $query = Product::where(['rooms_id' => $id]);
+
             return DataTables::of($query)
                 ->addcolumn('action', function ($item) {
                     return '
@@ -53,16 +59,11 @@ class CourseScheduleController extends Controller
                     ';
                 })
 
-                ->editColumn('photos', function ($item) {
-                    return $item->photos ? '<img src="' . Storage::url($item->photos) . '" style="max-height: 50px;" />' : '';
-                })
-                ->rawColumns(['action', 'photos'])
+                ->rawColumns(['action'])
                 ->make();
         }
 
-        $searchMatakuliah = $request->input('course') ?? null;
-
-        return view('pages.admin.course-schedule.index', [
+        return view('pages.admin.schedule.index', [
             'searchMatakuliah' => $searchMatakuliah, 
         ]);
     }
@@ -86,7 +87,7 @@ class CourseScheduleController extends Controller
         $searchMatakuliah = $request->input('course') ?? null;
         $selectedMatakuliah = $searchMatakuliah ? Course::find($searchMatakuliah )->first() : null;
 
-        return view('pages.admin.course-schedule.create', [
+        return view('pages.admin.schedule.create', [
             'TAHUN_AJARAN' => $TAHUN_AJARAN,
             
             'products' => $products,

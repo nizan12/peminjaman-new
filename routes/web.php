@@ -14,7 +14,7 @@ use App\Http\Controllers\Admin\LectureController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductGalleryController;
-use App\Http\Controllers\Admin\CourseScheduleController;
+use App\Http\Controllers\Admin\ScheduleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +46,7 @@ Route::resource('lecture', LectureController::class);
 Route::resource('room', RoomController::class);
 Route::resource('product', ProductController::class);
 Route::resource('product-gallery', ProductGalleryController::class);
-Route::resource('course-schedule', CourseScheduleController::class);
+Route::resource('schedule', ScheduleController::class);
 Route::resource('user', UserController::class);
 
 Route::get('/list-ruangan', [RoomController::class, 'list_ruangan'])->name('list-ruangan');

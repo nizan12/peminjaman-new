@@ -24,7 +24,7 @@ Tambah Jadwal Matakuliah
                     @endif
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('course-schedule.store') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('schedule.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
 
@@ -198,7 +198,7 @@ Tambah Jadwal Matakuliah
                                 </div>
                                 <div class="row">
                                     <div class="col text-right">
-                                        <button type="button" class="btn btn-danger px-5" onclick="window.location = '{{ $searchMatakuliah ? '/course-schedule?course=' . $searchMatakuliah : url('/course-schedule') }}' ">
+                                        <button type="button" class="btn btn-danger px-5" onclick="window.location = '{{ $searchMatakuliah ? '/schedule?course=' . $searchMatakuliah : url('/schedule') }}' ">
                                             Cancel
                                         </button>
 
