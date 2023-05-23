@@ -35,7 +35,7 @@ class BannerController extends Controller
                                     <a class="dropdown-item" href="' . route('banner.edit', $item->id) . '">
                                         Sunting
                                     </a>
-                                    <form action="'. route('banner.destroy', $item->id) .'" method="POST">
+                                    <form onsubmit="delete_confirm(event)" action="'. route('banner.destroy', $item->id) .'" method="POST">
                                         ' . method_field('delete') . csrf_field() .'    
                                         <button type="submit" class="dropdown-item text-danger">
                                             Hapus
