@@ -7,7 +7,7 @@ use App\Models\Course;
 use App\Models\Lecture;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use App\Models\CourseSchedule;
+use App\Models\Schedule;
 use App\Models\ProductGallery;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
@@ -33,8 +33,7 @@ class ScheduleController extends Controller
         $selectedMatakuliah = $searchMatakuliah ? Course::findOrFail($searchMatakuliah ) : null;
 
         if (request()->ajax()) {
-            $query = CourseSchedule::where();
-            $query = Product::where(['rooms_id' => $id]);
+            $query = Schedule::where(['courses_id' => $selectedMatakuliah]);
 
             return DataTables::of($query)
                 ->addcolumn('action', function ($item) {
@@ -76,13 +75,13 @@ class ScheduleController extends Controller
         $products = Product::all();
         $matakuliah = Course::all()->groupBy('prodi');
         $JURUSAN_PRODI = Course::JURUSAN_PRODI;
-        $HARI = CourseSchedule::HARI;
+        $HARI = Schedule::HARI;
 
         $dosen = Lecture::all();
 
         $rooms = Room::all()->groupBy('building');
 
-        $TAHUN_AJARAN = CourseSchedule::TAHUN_AJARAN;
+        $TAHUN_AJARAN = Schedule::TAHUN_AJARAN;
 
         $searchMatakuliah = $request->input('course') ?? null;
         $selectedMatakuliah = $searchMatakuliah ? Course::find($searchMatakuliah )->first() : null;
@@ -104,14 +103,9 @@ class ScheduleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ProductGalleryRequest $request)
+    public function store(Request $request)
     {
-        $data['products_id'] = $request->products_id;
-        $data['photos'] = $request->file('photos')->store('assets/gallery', 'public');
-
-        ProductGallery::create($data);
-
-        return redirect()->route('product-gallery.index');
+        return redirect()->route('schedule.index');
     }
 
     /**
@@ -131,6 +125,6 @@ class ScheduleController extends Controller
 
         $item->delete();
 
-        return redirect()->route('product-gallery.index');
+        return redirect()->route('schedule.index');
     }
 }
