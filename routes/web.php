@@ -50,5 +50,6 @@ Route::resource('schedule', ScheduleController::class);
 Route::resource('user', UserController::class);
 
 Route::get('/list-ruangan', [RoomController::class, 'list_ruangan'])->name('list-ruangan');
+Route::get('/detail-ruangan/{id}', [RoomController::class, 'detail_ruangan'])->name('detail-ruangan');
 
 Route::resource('class', ClassController::class);
