@@ -37,7 +37,7 @@ Tambah Jadwal Matakuliah
                                                 @foreach ($matakuliah as $prodi => $matakuliahByProdi)
                                                 <optgroup label="{{ $prodi }}">
                                                     @foreach ($matakuliahByProdi as $matkul)
-                                                    <option value="{{ $matkul->id }}" @if ( old('courses_id') == $matkul->code) selected @elseif ($selectedMatakuliah && $selectedMatakuliah->code == $matkul->code) selected @endif>{{ $matkul->code }} | {{ $matkul->name }}</option>
+                                                    <option value="{{ $matkul->id }}" @if ( old('courses_id') == $matkul->id) selected @elseif ( $searchMatakuliah && $searchMatakuliah == $matkul->id) selected @endif>{{ $matkul->code }} | {{ $matkul->name }}</option>
                                                     @endforeach
                                                 </optgroup>
                                                 @endforeach
