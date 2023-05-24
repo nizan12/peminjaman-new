@@ -61,8 +61,8 @@ Ruangan
                             <h5 class="card-title"><a href="#">{{ $data->name }}</a></h5>
                             <p class="card-text">{{ $data->building }}</p>
                             <div class="read-more">
-                                <a href="/ruangan-borang/{{ $data->id }}"><i class="bi bi-arrow-right"></i> Detail Ruangan</a>
-                                <a href="/ruangan-borang/{{ $data->id }}"><i class="bi bi-arrow-right"></i> Borang Ruangan</a>
+                                <a href="/detail-ruangan/{{ $data->id }}"><i class="bi bi-arrow-right"></i> Detail Ruangan</a>
+                                {{-- <a href="/ruangan-borang/{{ $data->id }}"><i class="bi bi-arrow-right"></i> Borang Ruangan</a> --}}
 
                             </div>
                         </div>
