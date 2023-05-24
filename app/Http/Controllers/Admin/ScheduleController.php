@@ -33,6 +33,12 @@ class ScheduleController extends Controller
         $searchMatakuliah = $request->input('course') ?? null;
         $selectedMatakuliah = $searchMatakuliah ? Course::findOrFail($searchMatakuliah) : null;
 
+        if ( $searchMatakuliah ) {
+            $route = route('schedule.index', ['course' => $searchMatakuliah]);
+        } else {
+            $route = route('schedule.index');
+        }
+
         if (request()->ajax()) {
 
             if ($searchMatakuliah) {
@@ -61,6 +67,8 @@ class ScheduleController extends Controller
 
 
                 ->addcolumn('action', function ($item) {
+
+
                     return '
                         <div class="btn-group">
                             <div class="dropdown">
@@ -90,7 +98,8 @@ class ScheduleController extends Controller
                 ->make();
         }
 
-        $course = Course::all();
+        $course = Course::all()->groupBy('prodi');
+
 
         return view('pages.admin.schedule.index', [
             'searchMatakuliah' => $searchMatakuliah,
@@ -182,7 +191,7 @@ class ScheduleController extends Controller
         $jadwal->end_time = $endTime;
         $jadwal->courses_id = $request->courses_id;
         $jadwal->rooms_id = $request->rooms;
-        $jadwal->lecturers_id = $request->end_time;
+        $jadwal->lecturers_id = $request->lecturers_id;
         $jadwal->school_year = $request->school_year;
         $jadwal->student_class = $request->kelas;
 
@@ -201,20 +210,18 @@ class ScheduleController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id, Request $request)
     {
-        $item = ProductGallery::findOrFail($id);
-
-        $photos = $item->photos;
-
-        // hapus file dari direktori public
-        $public_path = public_path(Storage::url($item->photos));
-        if (!empty($photos) && file_exists($public_path)) {
-            unlink($public_path);
-        }
+        $item = Schedule::findOrFail($id);
 
         $item->delete();
 
-        return redirect()->route('schedule.index');
+        $searchMatakuliah = $request->input('course') ?? null;
+
+        if ( $searchMatakuliah ) {
+            return redirect()->route('schedule.index', ['course' => $searchMatakuliah]);
+        } else {
+            return redirect()->route('schedule.index');
+        }
     }
 }

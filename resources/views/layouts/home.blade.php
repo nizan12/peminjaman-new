@@ -140,8 +140,17 @@
 
   @include('elements.footer-scripts')
 
-  <!-- Tambahkan sebelum penutup tag body -->
+  <!-- Library Moment.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+  <!-- File bahasa lokal Moment.js untuk bahasa Indonesia -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/id.min.js"></script>
+
+
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/fullcalendar.min.js"></script>
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.1.7/index.global.min.js'></script>
+  
+
   @stack('addon-scripts')
 
 
