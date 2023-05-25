@@ -49,6 +49,21 @@ Tambah Jadwal Matakuliah
 
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <label>Jenis Pembelajaran <b class="text-danger">*</b></label>
+                                            <select name="course_type" class="form-control default-select @error('course_type') is-invalid @enderror">
+                                                <option value="">- Pilih Jenis Pembelajaran -</option>
+                                                <option value="Teori" @if ( old('course_type') == 'Teori') selected @endif>Teori</option>
+                                                <option value="Praktikum" @if ( old('courses_id') == 'Praktikum') selected @endif>Praktikum</option>
+
+                                            </select>
+
+                                            @error('course_type') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
                                             <label>Dosen <b class="text-danger">*</b></label>
                                             <select name="lecturers_id" class="form-control default-select @error('lecturers_id') is-invalid @enderror">
                                                 <option value="">- Pilih Dosen -</option>

@@ -160,6 +160,7 @@ class ScheduleController extends Controller
             'rooms' => 'required|exists:rooms,id',
             'start_time' => 'required',
             'end_time' => 'required',
+            'course_type' => 'required'
         ], [
             'courses_id.required' => 'Kolom Matakuliah tidak boleh kosong !',
             'courses_id.exists' => 'Matakuliah tidak terdaftar !',
@@ -172,6 +173,7 @@ class ScheduleController extends Controller
             'kelas.required' => 'Kolom Kelas tidak boleh kosong !',
 
             'day.required' => 'Kolom Hari tidak boleh kosong !',
+            'course_type.required' => 'Kolom Jenis Pembelajaran tidak boleh kosong !',
 
             'rooms.required' => 'Kolom Ruangan tidak boleh kosong !',
             'rooms.exists' => 'Ruaangan tidak terdaftar !',
@@ -190,6 +192,8 @@ class ScheduleController extends Controller
         $jadwal->start_time = $startTime;
         $jadwal->end_time = $endTime;
         $jadwal->courses_id = $request->courses_id;
+        $jadwal->course_type = $request->course_type;
+
         $jadwal->rooms_id = $request->rooms;
         $jadwal->lecturers_id = $request->lecturers_id;
         $jadwal->school_year = $request->school_year;
