@@ -161,6 +161,7 @@ Detail Ruangan
         var calendar = new FullCalendar.Calendar(calendarEl, {
 
             locale: 'id',
+            firstDay : 1,
             initialView: 'dayGridMonth', 
 
             buttonText: {
@@ -174,6 +175,65 @@ Detail Ruangan
 
 
             events: [
+
+            // Hari Libur untuk Sabtu
+            {
+            title: 'Hari Libur - Sabtu',
+            daysOfWeek: [6], //Sundays and saturdays
+            rendering:"background",
+            backgroundColor: 'red', // Warna latar belakang event hari libur
+            borderColor: 'red', // Warna garis tepi (border) event hari libur
+            overLap: false,
+            allDay: true,
+            display: 'background', // Menampilkan event sebagai latar belakang tanpa judul
+            extendedProps: {
+                type: 'holiday', 
+                holidayId: '1', // Menyimpan ID jadwal ke dalam extendedProps
+                courseName: 'Harap mengajukan borang ke Manajemen',
+                notes: 'Harap mengajukan borang ke Manajemen',
+                // Tambahkan properti lain yang ingin Anda tampilkan di modal
+                }
+            },
+
+            // Hari Libur untuk Sabtu
+            {
+                title: 'Hari Libur - Minggu',
+                daysOfWeek: [0], //Sundays and saturdays
+                rendering:"background",
+                backgroundColor: 'red', // Warna latar belakang event hari libur
+                borderColor: 'red', // Warna garis tepi (border) event hari libur
+                overLap: false,
+                allDay: true,
+                display: 'background', // Menampilkan event sebagai latar belakang tanpa judul
+                extendedProps: {
+                    type: 'holiday', 
+                    holidayId: '1', // Menyimpan ID jadwal ke dalam extendedProps
+                    courseName: 'Harap mengajukan borang ke Manajemen',
+                    notes: 'Harap mengajukan borang ke Manajemen',
+                    // Tambahkan properti lain yang ingin Anda tampilkan di modal
+                    }
+            },
+
+
+            // Event Hari Libur / Hari Besar
+            {
+                    title: 'Hari Raya Idul Fitri 1445H',
+                    start: '2023-05-30', // Tanggal hari libur
+                    allDay: true, // Menandakan bahwa event berlangsung sepanjang hari
+                    backgroundColor: 'red', // Warna latar belakang event hari libur
+                    borderColor: 'red', // Warna garis tepi (border) event hari libur
+                    display: 'background', // Menampilkan event sebagai latar belakang tanpa judul
+
+                    extendedProps: {
+                        type: 'holiday', 
+                        holidayId: '1', // Menyimpan ID jadwal ke dalam extendedProps
+                        courseName: 'Hari Raya Idul Fitri 1445H',
+                        notes: 'Harap mengajukan borang ke Manajemen',
+                        // Tambahkan properti lain yang ingin Anda tampilkan di modal
+                    }
+                },
+
+                
 
                 // Event Peminjaman
                 {
@@ -214,8 +274,8 @@ Detail Ruangan
                     daysOfWeek: [{{ $value->day ?? 0 }}], // Mengatur hari Senin (0: Minggu, 1: Senin, dst.)
                     startTime: '{{ $start_time }}', // Waktu mulai kegiatan
                     endTime: '{{ $end_time }}', // Waktu selesai kegiatan
-                    startRecur: '{{ $start_date }}', // Tanggal pertama jadwal berulang (di hari Senin)
-                    endRecur: '{{ $end_date }}', // Tanggal terakhir jadwal berulang (di hari Senin)
+                    // startRecur: '{{ $start_date }}', // Tanggal pertama jadwal berulang (di hari Senin)
+                    // endRecur: '{{ $end_date }}', // Tanggal terakhir jadwal berulang (di hari Senin)
                     allDay: false, 
                     extendedProps: {
                         type: 'TERJADWAL', 
@@ -248,53 +308,60 @@ Detail Ruangan
             },
 
             eventClick: function(info) {
-
-
-                console.log(info);
-
                 var event = info.event;
-                var courseName = event.extendedProps.courseName;
-                var studentClass = event.extendedProps.studentClass;
-                var startTime = event.extendedProps.startTime;
-                var endTime = event.extendedProps.endTime;
-                var lecturerName = event.extendedProps.lecturerName;
+                var eventType = event.extendedProps.type;
+                var notes = event.extendedProps.notes;
 
-                var message = 'Detail Kegiatan:\n' +
-                    'Matakuliah: ' + courseName + '\n' +
-                    'Kelas: ' + studentClass + '\n' +
-                    'Waktu Mulai: ' + startTime + '\n' +
-                    'Waktu Selesai: ' + endTime + '\n' +
-                    'Dosen: ' + lecturerName + '\n'
+                if (eventType === 'TERJADWAL') {
+                    var courseName = event.extendedProps.courseName;
+                    var studentClass = event.extendedProps.studentClass;
+                    var startTime = event.extendedProps.startTime;
+                    var endTime = event.extendedProps.endTime;
+                    var lecturerName = event.extendedProps.lecturerName;
+
+                    var message = 'Detail Kegiatan\n' +
+                        'Matakuliah: ' + courseName + '\n' +
+                        'Kelas: ' + studentClass + '\n' +
+                        'Waktu Mulai: ' + startTime + '\n' +
+                        'Waktu Selesai: ' + endTime + '\n' +
+                        'Dosen: ' + lecturerName + '\n';
+                } else if (eventType === 'holiday') {
+                    var courseName = event.title;
+
+                    var message = 'Hari Libur\n' + courseName + '\n' + 'Notes: ' + notes ;
+                } else {
+                    var courseName = event.extendedProps.courseName;
+
+                    var message = 'Borang Peminjaman\n' +
+                        'Nama Event: ' + courseName + '\n';
+                }
 
                 alert(message);
-            }
+            },
+
+            eventRender: function(info) {
+                // Membuat elemen judul wrap
+                var titleWrapEl = document.createElement('div');
+                titleWrapEl.className = 'event-title-wrap';
+                titleWrapEl.textContent = info.event.title;
+
+                // Membuat elemen tanggal
+                var dateEl = document.createElement('div');
+                dateEl.className = 'event-date';
+                dateEl.textContent = info.event.start.getDate();
+
+                // Menghapus judul asli dari elemen event
+                info.el.querySelector('.fc-title').innerHTML = '';
+
+                // Menambahkan elemen judul wrap dan elemen tanggal ke dalam elemen event
+                info.el.appendChild(titleWrapEl);
+                info.el.appendChild(dateEl);
+            },
 
 
-            // eventClick: function(info) {
-            //     var scheduleId = info.event.extendedProps.scheduleId;
-            //     var courseName = info.event.extendedProps.courseName;
-            //     var studentClass = info.event.extendedProps.studentClass;
-            //     // Mendapatkan properti lain yang Anda tambahkan
 
-            //     // Tampilkan modal dengan detail kegiatan
-            //     // Gantikan 'modalId' dengan ID modal yang ingin Anda tampilkan
-            //     var modal = document.getElementById('modalId');
-            //     // Gantikan 'courseNameElement' dengan elemen di dalam modal yang akan menampilkan nama mata kuliah
-            //     var courseNameElement = modal.querySelector('.course-name');
-            //     // Gantikan 'studentClassElement' dengan elemen di dalam modal yang akan menampilkan kelas mahasiswa
-            //     var studentClassElement = modal.querySelector('.student-class');
-            //     // Gantikan 'otherElement' dengan elemen di dalam modal yang akan menampilkan properti lain yang Anda tambahkan
 
-            //     // Mengisi elemen modal dengan detail kegiatan
-            //     courseNameElement.textContent = courseName;
-            //     studentClassElement.textContent = studentClass;
-            //     // Mengisi elemen lain dengan properti yang sesuai
 
-            //     // Membuka modal
-            //     // Gantikan 'modal' dengan objek modal yang Anda gunakan di aplikasi Anda
-            //     // Anda dapat menggunakan library atau metode lain untuk membuka modal
-            //     $('#modalId').show();
-            // }
         });
         calendar.render();
 
