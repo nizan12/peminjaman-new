@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\RoomRequest;
+use App\Models\Holiday;
 use App\Models\Schedule;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
@@ -55,10 +56,12 @@ class RoomController extends Controller
 
         // Data Jadwal di Ruangan
         $terjadwal = Schedule::where('rooms_id', $id)->get();
+        $holiday = Holiday::orderBy('date')->get();
 
         return view('detail-ruangan', [
             'item' => $item,
             'terjadwal' => $terjadwal,
+            'holiday'   => $holiday,
         ]);
 
     }
