@@ -9,6 +9,14 @@ class Schedule extends Model
 {
     use HasFactory;
 
+    const JENIS_JADWAL = [
+        ['id' => 0, 'name' => 'PBM', 'name_long' => 'Perkuliahan'],
+        ['id' => 1, 'name' => 'ATS', 'name_long' => 'Asesmen Tengah Semester'],
+        ['id' => 2, 'name' => 'UAS', 'name_long' => 'Asesmen Akhir Semester'],
+        ['id' => 3, 'name' => 'Other', 'name_long' => 'Lainnya'],
+
+    ];
+
 
     const HARI = [
         ['id' => 0, '_id' => 'Minggu', '_en' => 'Sunday'],
@@ -144,5 +152,10 @@ class Schedule extends Model
     public static function getEndTahun($tahun_ajaran)
     {
         return self::TAHUN_AJARAN[$tahun_ajaran]['end_date'] ?? '2020-12-31';
+    }
+    
+    public static function getJenisJadwal($jenis_jadwal)
+    {
+        return self::JENIS_JADWAL[$jenis_jadwal]['name_long'] ?? 'Perkuliahan';
     }
 }

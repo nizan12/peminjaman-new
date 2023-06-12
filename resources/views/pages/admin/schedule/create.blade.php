@@ -28,6 +28,25 @@ Tambah Jadwal Matakuliah
                                 @csrf
                                 <div class="row">
 
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Jenis Jadwal <b class="text-danger">*</b></label>
+                                            <select name="schedule_type" class="form-control default-select @error('schedule_type') is-invalid @enderror">
+                                                <option value="">- Pilih Jenis -</option>
+                                                @foreach ($JENIS_JADWAL as $key => $value)
+                                                <option value="{{ $value['id'] }}" @if( old('schedule_type') == $value['id'] ) selected @endif>{{ $value['name'] }} | {{ $value['name_long'] }}</option>
+                                                @endforeach
+                                            </select>
+
+
+                                            @error('schedule_type')
+                                            <small class="invalid-feedback">{{ $message }}</small>
+                                            @enderror
+                                        </div>
+
+                                    </div>
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Matakuliah <b class="text-danger">*</b></label>
@@ -122,7 +141,7 @@ Tambah Jadwal Matakuliah
                                             <label>Hari <b class="text-danger">*</b></label>
                                             <select name="day" class="form-control default-select @error('day') is-invalid @enderror">
                                                 <option value="">- Pilih Hari -</option>
-                                                @foreach ($HARI as $item => $value)
+                                                @foreach ($HARI as $key => $value)
                                                 <option value="{{ $value['id'] }}" @if( old('day') == $value['id'] ) selected @endif>{{ $value['_id'] }}</option>
                                                 @endforeach
                                             </select>
@@ -164,8 +183,8 @@ Tambah Jadwal Matakuliah
                                             <select name="start_time" class="form-control default-select @error('start_time') is-invalid @enderror">
                                                 <option value="">- Pilih Jam -</option>
 
-                                                @foreach ($START_TIME as $item)
-                                                <option value="{{ $item }}" @if( old('start_time') == $item ) selected @endif>{{ $item }}</option>
+                                                @foreach ($START_TIME as $value)
+                                                <option value="{{ $value }}" @if( old('start_time') == $value ) selected @endif>{{ $value }}</option>
                                                 @endforeach
                                                 
                                             </select>
@@ -181,8 +200,8 @@ Tambah Jadwal Matakuliah
                                             <label>Jam Selesai <b class="text-danger">*</b></label>
                                             <select name="end_time" class="form-control default-select @error('end_time') is-invalid @enderror">
                                                 <option value="">- Pilih Jam -</option>
-                                                @foreach ($END_TIME as $item)
-                                                <option value="{{ $item }}" @if( old('end_time') == $item ) selected @endif>{{ $item }}</option>
+                                                @foreach ($END_TIME as $value)
+                                                <option value="{{ $value }}" @if( old('end_time') == $value ) selected @endif>{{ $value }}</option>
                                                 @endforeach
                                                 
                                             </select>

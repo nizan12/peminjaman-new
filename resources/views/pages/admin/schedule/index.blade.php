@@ -61,12 +61,15 @@ Jadwal Matakuliah
                                 <table class="table table-hover scroll-horizontal-vertical w-100" id="crudTable">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            {{-- <th>ID</th> --}}
+                                            <th>Tahun Ajaran</th>
+                                            <th>Jenis Jadwal</th>
+
                                             <th>Matakuliah</th>
                                             <th>Kelas</th>
                                             <th>Ruangan</th>
                                             <th>Jam Sesi</th>
-                                            <th>Action</th>
+                                            <th style="width:10%">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody></tbody>
@@ -91,14 +94,25 @@ Jadwal Matakuliah
         , ajax: {
             url: window.location.href
         }
-        , columns: [{
-                data: 'id'
-                , name: 'id'
+        , columns: [
+            {
+                data: 'school_year'
+                , name: 'school_year'
             }
+
+            , {
+                data: 'schedule_type'
+                , name: 'schedule_type'
+            }
+
             , {
                 data: 'course'
                 , name: 'course'
             }
+
+
+
+
             , {
                 data: 'student_class'
                 , name: 'kelas'
