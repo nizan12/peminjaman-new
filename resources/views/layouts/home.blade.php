@@ -39,8 +39,7 @@
 
     <link href="{{ asset('/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
 
-    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/fullcalendar.min.css" rel='stylesheet' />
-
+    {{-- <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/fullcalendar.min.css" rel='stylesheet' /> --}}
 
 </head>
 
@@ -54,16 +53,6 @@
             padding: 5px;
         }
 
-        .fc-daygrid-event .fc-event-title {
-            padding-top: 5px;
-            /* Sesuaikan dengan nilai padding yang diinginkan */
-        }
-
-        .fc-daygrid-event .fc-event-time {
-            display: block;
-            white-space: normal;
-        }
-
         .event-title-wrap {
             overflow-wrap: break-word;
             word-wrap: break-word;
@@ -72,15 +61,29 @@
             /* Padding antara judul dan tanggal */
         }
 
+
+        .fc-daygrid-event .fc-event-title {
+            padding-top: 5px;
+            /* Sesuaikan dengan nilai padding yang diinginkan */
+        }
+
+
+        .fc-daygrid-event .fc-event-time {
+            display: block;
+            /* color: #3A87AD; */
+
+            white-space: normal;
+        }
+
+
         .event-date {
             font-size: 10px;
-            color: #888;
+            /* color: #888; */
         }
 
         .fc-event {
             cursor: pointer;
         }
-
 
     </style>
 
@@ -107,23 +110,15 @@
                     <li><a class="nav-link scrollto" href="/#about">About</a></li>
                     <li><a class="nav-link scrollto" href="/list-ruangan">Ruangan</a></li>
                     <li><a class="nav-link scrollto " href="/#portfolio">Alat Praktikum</a></li>
-                    {{-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li> --}}
+                    <li class="dropdown"><a href="#"><span>Jadwal Perkuliahan</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="/jadwal/dosen">Dosen</a></li>
+                            <li><a href="/jadwal/kelas">Kelas</a></li>
+                            <li><a href="/jadwal/ujian">Jadwal Ujian</a></li>
+                            {{-- <li><a href="#">Drop Down 3</a></li> --}}
+                            {{-- <li><a href="#">Drop Down 4</a></li> --}}
+                        </ul>
+                    </li>
 
 
                     @auth
@@ -172,9 +167,10 @@
     <!-- File bahasa lokal Moment.js untuk bahasa Indonesia -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/id.min.js"></script>
 
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js'></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/fullcalendar.min.js"></script>
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.1.7/index.global.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/index.global.min.js'></script>
+
 
 
     @stack('addon-scripts')
