@@ -76,7 +76,6 @@ Detail Ruangan
                                         <th>Deskripsi</th>
                                         <th>Stok</th>
                                         <th>Kondisi</th>
-                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -141,13 +140,6 @@ Detail Ruangan
                 data: 'condition'
                 , name: 'condition'
             }
-            , {
-                data: 'action'
-                , name: 'action'
-                , orderable: false
-                , searcable: false
-                , width: '15%'
-            }
         , ]
     })
 
@@ -160,8 +152,14 @@ Detail Ruangan
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
 
+            timeZone: 'UTC',
             locale: 'id',
             firstDay : 1,
+
+            editable: false,
+            displayEventTime: true, 
+
+
             initialView: 'dayGridMonth', 
 
             buttonText: {
@@ -170,77 +168,144 @@ Detail Ruangan
             headerToolbar: {
                 left: 'prev,next today', 
                 center: 'title', 
-                right: 'timeGridWeek,listWeek,dayGridMonth'
+                right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
             },
 
 
             events: [
-
-            // Hari Libur untuk Sabtu
-            {
-            title: 'Hari Libur - Sabtu',
-            daysOfWeek: [6], //Sundays and saturdays
-            rendering:"background",
-            backgroundColor: 'red', // Warna latar belakang event hari libur
-            borderColor: 'red', // Warna garis tepi (border) event hari libur
-            overLap: false,
-            allDay: true,
-            display: 'background', // Menampilkan event sebagai latar belakang tanpa judul
-            extendedProps: {
-                type: 'holiday', 
-                holidayId: '1', // Menyimpan ID jadwal ke dalam extendedProps
-                courseName: 'Harap mengajukan borang ke Manajemen',
-                notes: 'Harap mengajukan borang ke Manajemen',
-                // Tambahkan properti lain yang ingin Anda tampilkan di modal
-                }
-            },
-
-            // Hari Libur untuk Sabtu
-            {
-                title: 'Hari Libur - Minggu',
-                daysOfWeek: [0], //Sundays and saturdays
+                // Hari Libur untuk Sabtu
+                {
+                daysOfWeek: [6], //Sundays and saturdays
                 rendering:"background",
-                backgroundColor: 'red', // Warna latar belakang event hari libur
-                borderColor: 'red', // Warna garis tepi (border) event hari libur
+                backgroundColor: 'pink', // Warna latar belakang event hari libur
+                borderColor: 'pink', // Warna garis tepi (border) event hari libur
                 overLap: false,
                 allDay: true,
                 display: 'background', // Menampilkan event sebagai latar belakang tanpa judul
-                extendedProps: {
-                    type: 'holiday', 
-                    holidayId: '1', // Menyimpan ID jadwal ke dalam extendedProps
-                    courseName: 'Harap mengajukan borang ke Manajemen',
-                    notes: 'Harap mengajukan borang ke Manajemen',
-                    // Tambahkan properti lain yang ingin Anda tampilkan di modal
-                    }
-            },
+                },
+
+                {
+                        title: 'Hari Libur - Sabtu', 
+                        daysOfWeek: [6], //Sundays and saturdays
+                        allDay: true,
+
+                        borderColor: 'red', // Ubah warna event di sini
+                        backgroundColor: 'red', // Ubah warna event di sini
+                        extendedProps: {
+                            type: 'holiday', 
+                            holidayId: '1', // Menyimpan ID jadwal ke dalam extendedProps
+                            courseName: 'Harap mengajukan borang ke Manajemen',
+                            notes: 'Harap mengajukan borang ke Manajemen',
+                            // Tambahkan properti lain yang ingin Anda tampilkan di modal
+                        }
+                },
 
 
-            // Event Hari Libur / Hari Besar
-            {
-                    title: 'Hari Raya Idul Fitri 1445H',
-                    start: '2023-05-30', // Tanggal hari libur
-                    allDay: true, // Menandakan bahwa event berlangsung sepanjang hari
-                    backgroundColor: 'red', // Warna latar belakang event hari libur
-                    borderColor: 'red', // Warna garis tepi (border) event hari libur
-                    display: 'background', // Menampilkan event sebagai latar belakang tanpa judul
+                // Hari Libur untuk Minggu
+                {
+                daysOfWeek: [0], //Sundays and saturdays
+                rendering:"background",
+                backgroundColor: 'pink', // Warna latar belakang event hari libur
+                borderColor: 'pink', // Warna garis tepi (border) event hari libur
+                overLap: true,
+                allDay: true,
+                display: 'background', // Menampilkan event sebagai latar belakang tanpa judul
+                },
+                {
+                    title: 'Hari Libur - Minggu', 
+                    daysOfWeek: [0], //Sundays and saturdays
+                    allDay: true,
 
+                    borderColor: 'red', // Ubah warna event di sini
+                    backgroundColor: 'red', // Ubah warna event di sini
                     extendedProps: {
                         type: 'holiday', 
                         holidayId: '1', // Menyimpan ID jadwal ke dalam extendedProps
-                        courseName: 'Hari Raya Idul Fitri 1445H',
+                        courseName: 'Harap mengajukan borang ke Manajemen',
                         notes: 'Harap mengajukan borang ke Manajemen',
                         // Tambahkan properti lain yang ingin Anda tampilkan di modal
                     }
                 },
 
+                @foreach($holiday as $key => $value)
+
+                    @php
+                        // Mendapatkan objek DateTime dari tanggal
+                        $holidayDate = new DateTime($value->date);
+                        // Memeriksa apakah tanggal jatuh pada hari Sabtu (6) atau Minggu (0)
+                        $isWeekend = ($holidayDate->format('N') == 6 || $holidayDate->format('N') == 7);
+                    @endphp
+            
+
+                @if ($isWeekend)
+                    // Tanggal libur jatuh pada hari Sabtu atau Minggu
+
+                    // Event Hari Libur / Hari Besar pada hari Sabtu atau Minggu
+                    {
+                        // Dinamis
+                        start: '{{ $value->date }}', // Tanggal hari libur
+                        backgroundColor: 'transparent', // Warna latar belakang event hari libur
+                        borderColor: 'transparent', // Warna garis tepi (border) event hari libur
+                        allDay: true, // Menandakan bahwa event berlangsung sepanjang hari
+                        display: 'background', // Menampilkan event sebagai latar belakang tanpa judul
+                    },
+                    {
+                        title: '{{ $value->title }}', 
+                        start: '{{ $value->date }}', // Tanggal hari libur
+                        allDay: true,
+                        borderColor: 'red', // Ubah warna event di sini
+                            backgroundColor: 'red', // Ubah warna event di sini
+                        extendedProps: {
+                            type: 'holiday', 
+                            holidayId: '1', // Menyimpan ID jadwal ke dalam extendedProps
+                            courseName: '{{ $value->title }}',
+                            notes: 'Harap mengajukan borang ke Manajemen',
+                            // Tambahkan properti lain yang ingin Anda tampilkan di modal
+                        }
+                    },
+                @else
+                    // Tanggal libur tidak jatuh pada hari Sabtu atau Minggu
+
+                    // Event Hari Libur / Hari Besar pada hari biasa
+                    {
+                        // Dinamis
+                        start: '{{ $value->date }}', // Tanggal hari libur
+
+                        allDay: true, // Menandakan bahwa event berlangsung sepanjang hari
+                        backgroundColor: 'pink', // Warna latar belakang event hari libur
+                        borderColor: 'pink', // Warna garis tepi (border) event hari libur
+                        display: 'background', // Menampilkan event sebagai latar belakang tanpa judul
+                    },
+                    {
+                        title: '{{ $value->title }}', 
+                        start: '{{ $value->date }}', // Tanggal hari libur
+                        allDay: true,
+
+                        borderColor: 'red', // Ubah warna event di sini
+                        backgroundColor: 'red', // Ubah warna event di sini
+                        extendedProps: {
+                            type: 'holiday', 
+                            holidayId: '1', // Menyimpan ID jadwal ke dalam extendedProps
+                            courseName: '{{ $value->title }}',
+                            notes: 'Harap mengajukan borang ke Manajemen',
+                            // Tambahkan properti lain yang ingin Anda tampilkan di modal
+                        }
+                    },
+                @endif
+                
+                @endforeach
+
+            
+
                 
 
                 // Event Peminjaman
                 {
-                    title: 'Contoh PBL', 
+                    title: 'Contoh', 
                     start: '2023-05-23T10:00:00',
                     end: '2023-05-23T14:00:00', 
-                    backgroundColor: 'red', // Ubah warna event di sini
+                    borderColor: 'orange', // Warna garis tepi (border) event hari libur
+                    backgroundColor: "orange", // Ubah warna event di sini
                     extendedProps: {
                         type: 'BORANG', 
                         scheduleId: '1', // Menyimpan ID jadwal ke dalam extendedProps
@@ -249,6 +314,8 @@ Detail Ruangan
                         // Tambahkan properti lain yang ingin Anda tampilkan di modal
                     }
                 },
+
+
 
                 @php
                 use App\Models\Schedule;
@@ -261,6 +328,9 @@ Detail Ruangan
                 $tahun_ajaran = $value->school_year; // Ambil tahun ajaran dari data jadwal
                 $start_date = Schedule::getStartTahun($tahun_ajaran);
                 $end_date = Schedule::getEndTahun($tahun_ajaran);
+                $jenis_jadwal = Schedule::getJenisJadwal($value->schedule_type ?? 0);
+
+                
 
                 $start_time = Carbon::createFromFormat('H:i:s', $value->start_time)->format('H:i');
                 $end_time = Carbon::createFromFormat('H:i:s', $value->end_time)->format('H:i');
@@ -270,16 +340,21 @@ Detail Ruangan
                 @endphp
                 // Recurring
                 {
-                    title: '{{ $value->course->name }} | {{ $value->student_class }}',
+                    title: '{{ $jenis_jadwal }} {{ $value->course_type }} {{ $value->course->name }} | {{ $value->student_class }} - {{ $value->lecture->code }}',
                     daysOfWeek: [{{ $value->day ?? 0 }}], // Mengatur hari Senin (0: Minggu, 1: Senin, dst.)
                     startTime: '{{ $start_time }}', // Waktu mulai kegiatan
                     endTime: '{{ $end_time }}', // Waktu selesai kegiatan
-                    // startRecur: '{{ $start_date }}', // Tanggal pertama jadwal berulang (di hari Senin)
-                    // endRecur: '{{ $end_date }}', // Tanggal terakhir jadwal berulang (di hari Senin)
-                    allDay: false, 
+                    startRecur: '{{ $start_date }}', // Tanggal pertama jadwal berulang (di hari Senin)
+                    endRecur: '{{ $end_date }}', // Tanggal terakhir jadwal berulang (di hari Senin)
+                    allDay: false,
+                    backgroundColor: 'blue', // Ubah warna event di sini
+                    borderColor: 'blue', // Ubah warna event di sini
+
+                    
                     extendedProps: {
                         type: 'TERJADWAL', 
                         scheduleId: '{{ $value->id }}', // Menyimpan ID jadwal ke dalam extendedProps
+                        scheduleType: '{{ $jenis_jadwal }}', // Menyimpan ID jadwal ke dalam extendedProps
                         courseName: '{{ $value->course->name }}',
                         studentClass: '{{ $value->student_class }}', 
                         startTime: '{{ $start_time }}', // Waktu mulai kegiatan
@@ -288,7 +363,6 @@ Detail Ruangan
                         // Tambahkan properti lain yang ingin Anda tampilkan di modal
                     }, 
 
-                    backgroundColor: 'blue', // Ubah warna event di sini
 
                 }, 
                 
@@ -296,6 +370,21 @@ Detail Ruangan
 
 
             ], 
+
+            eventClassNames: function(info) {
+                if (info.event.extendedProps.type === 'BORANG' && info.view.type === 'dayGridMonth') {
+                    return 'custom-event-color'; // Mengembalikan nama kelas kustom 'custom-event-color' untuk event yang sesuai
+                }
+                return ''; // Mengembalikan string kosong jika tidak ada kelas khusus yang diberikan
+            },
+
+            eventBackgroundColor: function(info) {
+                if (info.event.extendedProps.type === 'BORANG') {
+                    return 'orange'; // Mengembalikan warna latar belakang 'orange' untuk event dengan jenis 'BORANG'
+                }
+                return ''; // Mengembalikan string kosong jika tidak ada warna latar belakang yang diberikan
+            },
+
 
             eventContent: function(info) {
                 var title = info.event.title;
@@ -307,19 +396,29 @@ Detail Ruangan
                 };
             },
 
+
             eventClick: function(info) {
+
+                if (info.event.display === 'background') {
+                    // Jika event memiliki tipe display "background", tidak melakukan apa-apa
+                    return;
+                }
+
+
                 var event = info.event;
                 var eventType = event.extendedProps.type;
                 var notes = event.extendedProps.notes;
 
                 if (eventType === 'TERJADWAL') {
                     var courseName = event.extendedProps.courseName;
+                    var scheduleType = event.extendedProps.scheduleType;
                     var studentClass = event.extendedProps.studentClass;
                     var startTime = event.extendedProps.startTime;
                     var endTime = event.extendedProps.endTime;
                     var lecturerName = event.extendedProps.lecturerName;
 
                     var message = 'Detail Kegiatan\n' +
+                    scheduleType + '\n' +
                         'Matakuliah: ' + courseName + '\n' +
                         'Kelas: ' + studentClass + '\n' +
                         'Waktu Mulai: ' + startTime + '\n' +
@@ -340,6 +439,11 @@ Detail Ruangan
             },
 
             eventRender: function(info) {
+
+                if (info.event.extendedProps.type === 'BORANG' && info.view.type === 'dayGridMonth') {
+                    info.el.style.backgroundColor = 'orange'; // Mengubah warna latar belakang event menjadi oranye
+                    info.el.style.borderColor = 'orange'; // Mengubah warna garis tepi event menjadi oranye
+                }
                 // Membuat elemen judul wrap
                 var titleWrapEl = document.createElement('div');
                 titleWrapEl.className = 'event-title-wrap';
