@@ -40,10 +40,67 @@
 
     {{-- CSS untuk Sweetalert 2 --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
 
 </head>
 
 <body>
+
+    <style type="text/css">
+
+        .select2-container--is-invalid .select2-selection--single,
+        .select2-container--is-invalid .select2-selection--multiple {
+            border-color: #dc3545 !important;
+        }
+
+        .select2-container--is-invalid .select2-selection__arrow {
+            border-color: #dc3545 transparent transparent !important;
+        }
+
+        .select2-container--is-invalid .select2-selection__rendered {
+            color: #dc3545 !important;
+        }
+
+        .is-invalid+.select2 .select2-selection {
+            border-color: #dc3545 !important;
+            box-shadow: 0 0 0 0.1rem rgba(220, 53, 69, 0.25) !important;
+        }
+
+
+        .select2-container .select2-selection--single {
+            border-color : #F3F4F7;
+            height: 55px;
+            /* Ubah sesuai kebutuhan tinggi yang diinginkan */
+            line-height: 50px;
+            font-size: 14px;
+            /* Ubah sesuai kebutuhan ukuran font yang diinginkan */
+            padding: 0 10px;
+
+            border-radius: 15px;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            border-color : #F3F4F7;
+            
+            height: 55px;
+            /* Ubah sesuai kebutuhan tinggi yang diinginkan */
+
+            border-radius: 15px;
+
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            border-color : #F3F4F7;
+            
+            line-height: 55px;
+            /* Ubah sesuai kebutuhan tinggi yang diinginkan */
+
+            border-radius: 15px;
+
+        }
+
+    </style>
+
     <div id="preloader">
         <div class="sk-three-bounce">
             <div class="sk-child sk-bounce1"></div>

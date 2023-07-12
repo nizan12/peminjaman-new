@@ -40,6 +40,7 @@
     <link href="{{ asset('/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
 
     {{-- <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/fullcalendar.min.css" rel='stylesheet' /> --}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
 
 </head>
 
@@ -83,6 +84,46 @@
 
         .fc-event {
             cursor: pointer;
+        }
+
+
+        .select2-container--is-invalid .select2-selection--single,
+        .select2-container--is-invalid .select2-selection--multiple {
+            border-color: #dc3545 !important;
+        }
+
+        .select2-container--is-invalid .select2-selection__arrow {
+            border-color: #dc3545 transparent transparent !important;
+        }
+
+        .select2-container--is-invalid .select2-selection__rendered {
+            color: #dc3545 !important;
+        }
+
+        .is-invalid+.select2 .select2-selection {
+            border-color: #dc3545 !important;
+            box-shadow: 0 0 0 0.1rem rgba(220, 53, 69, 0.25) !important;
+        }
+
+
+
+        .select2-container .select2-selection--single {
+            height: 55px;
+            line-height: 50px;
+            font-size: 14px;
+            padding: 0 10px;
+            border-radius: 15px;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow {            
+            height: 55px;
+            border-radius: 15px;
+
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 55px;
+            border-radius: 15px;
         }
 
     </style>
