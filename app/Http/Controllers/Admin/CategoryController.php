@@ -34,7 +34,7 @@ class CategoryController extends Controller
                                     <a class="dropdown-item" href="' . route('category.edit', $item->id) . '">
                                         Sunting
                                     </a>
-                                    <form action="'. route('category.destroy', $item->id) .'" method="POST">
+                                    <form onsubmit="delete_confirm(event)" action="'. route('category.destroy', $item->id) .'" method="POST">
                                         ' . method_field('delete') . csrf_field() .'    
                                         <button type="submit" class="dropdown-item text-danger">
                                             Hapus

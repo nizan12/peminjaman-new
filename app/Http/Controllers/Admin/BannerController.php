@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Admin\BannerRequest;
 use Yajra\DataTables\DataTables;
 
+use Intervention\Image\Facades\Image;
 
 class BannerController extends Controller
 {
@@ -18,11 +19,10 @@ class BannerController extends Controller
      */
     public function index()
     {
-        if(request()->ajax())
-        {
+        if (request()->ajax()) {
             $query = Banner::query();
             return DataTables::of($query)
-                ->addcolumn('action', function($item) {
+                ->addcolumn('action', function ($item) {
                     return '
                         <div class="btn-group">
                             <div class="dropdown">
@@ -35,8 +35,8 @@ class BannerController extends Controller
                                     <a class="dropdown-item" href="' . route('banner.edit', $item->id) . '">
                                         Sunting
                                     </a>
-                                    <form action="'. route('banner.destroy', $item->id) .'" method="POST">
-                                        ' . method_field('delete') . csrf_field() .'    
+                                    <form onsubmit="delete_confirm(event)" action="' . route('banner.destroy', $item->id) . '" method="POST">
+                                        ' . method_field('delete') . csrf_field() . '    
                                         <button type="submit" class="dropdown-item text-danger">
                                             Hapus
                                         </button>
@@ -47,10 +47,10 @@ class BannerController extends Controller
                     ';
                 })
 
-                ->editColumn('photo', function ($item){
-                    return $item->photo ? '<img src="'. Storage::url($item->photo) .'" style="max-height: 40px;" />' : '';
+                ->editColumn('photo', function ($item) {
+                    return $item->photo ? '<img src="' . Storage::url($item->photo) . '" style="max-height: 40px;" />' : '';
                 })
-                ->rawColumns(['action','photo'])
+                ->rawColumns(['action', 'photo'])
                 ->make();
         }
 
@@ -71,13 +71,32 @@ class BannerController extends Controller
     public function store(BannerRequest $request)
     {
         $data = $request->all();
-        
-        $data['photo'] = $request->file('photo')->store('assets/banner','public');
+        $photoPath = $request->file('photo')->store('assets/banner', 'public');
+
+
+        // Mengompresi gambar menggunakan Intervention Image
+        $compressedPath = $this->compressImage($photoPath);
+
+        $data['photo'] = $compressedPath;
         $data['is_show'] = $request->has('is_show');
+
 
         Banner::create($data);
 
         return redirect()->route('banner.index');
+    }
+
+    private function compressImage($path, $quality = 85)
+    {
+
+        $filePath = storage_path('app/public/' . $path);
+        $image = Image::make($filePath);
+
+
+        // Kompresi dengan kualitas 80%
+        $image->save(storage_path('app/public/' . $path), $quality);
+
+        return $path;
     }
 
     /**
@@ -103,15 +122,14 @@ class BannerController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {       
-        if ($request->file('photo')){
-            $data['photo'] = $request->file('photo')->store('assets/banner','public');
+    {
+        if ($request->file('photo')) {
+            $data['photo'] = $request->file('photo')->store('assets/banner', 'public');
         }
-        
-        $data['is_show'] = 0;    
-        if ($request->has('is_show'))
-        {
-            $data['is_show'] = $request->is_show;    
+
+        $data['is_show'] = 0;
+        if ($request->has('is_show')) {
+            $data['is_show'] = $request->is_show;
         }
 
         $item = Banner::findOrFail($id);
@@ -128,6 +146,10 @@ class BannerController extends Controller
     {
         $item = Banner::findOrFail($id);
 
+        $filePath = storage_path('app/public/' . $item->photo );
+        if (is_readable($filePath)) {
+            unlink( $filePath );
+        }
 
         $item->delete();
 

@@ -7,11 +7,14 @@ use App\Http\Controllers\ToolController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ClassController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\HolidayController;
 use App\Http\Controllers\Admin\LectureController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Admin\ProductGalleryController;
 
 /*
@@ -36,6 +39,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/alat', [ToolController::class, 'index'])->name('tool-all');
 Route::get('/details/{id?}', [DetailController::class, 'index'])->name('detail-tool');
 
+
 Route::resource('banner', BannerController::class);
 Route::resource('category', CategoryController::class);
 Route::resource('course', CourseController::class);
@@ -43,6 +47,15 @@ Route::resource('lecture', LectureController::class);
 Route::resource('room', RoomController::class);
 Route::resource('product', ProductController::class);
 Route::resource('product-gallery', ProductGalleryController::class);
+Route::resource('schedule', ScheduleController::class);
 Route::resource('user', UserController::class);
+Route::resource('holiday', HolidayController::class);
 
 Route::get('/list-ruangan', [RoomController::class, 'list_ruangan'])->name('list-ruangan');
+Route::get('/detail-ruangan/{id}', [RoomController::class, 'detail_ruangan'])->name('detail-ruangan');
+
+Route::resource('class', ClassController::class);
+
+Route::prefix('jadwal')->group( function() {
+    Route::get('/dosen', [ ScheduleController::class, 'jadwal_dosen' ])->name('jadwal.dosen');
+});
