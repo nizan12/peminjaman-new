@@ -22,11 +22,10 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Nomor BMN</th>
+                                        <th>Nama</th>
+                                        <th>Kategori</th>
                                         <th>Deskripsi</th>
-                                        <th>Stok</th>
-                                        <th>Lokasi</th>
-                                        <th>Kondisi</th>
+                                        <th>File</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -55,11 +54,9 @@
         },
         columns: [
             {data: 'id', name:'id'},
-            {data: 'nomor_bmn', name:'nomor_bmn'},
+            {data: 'name', name:'name'},
             {data: 'description', name:'description'},
-            {data: 'stock', name:'stock'},
-            {data: 'location', name:'location'},
-            {data: 'condition', name:'condition'},
+            {data: 'categories_id', name:'categories_id'},
             {
                 data: 'action',
                 name: 'action',

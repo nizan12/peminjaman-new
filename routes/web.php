@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ToolController;
 use App\Http\Controllers\DetailController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ClassController;
@@ -38,6 +39,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/alat', [ToolController::class, 'index'])->name('tool-all');
 Route::get('/details/{id?}', [DetailController::class, 'index'])->name('detail-tool');
+Route::post('/details/{id?}', [DetailController::class, 'add'])->name('detail-add');
 
 
 Route::resource('banner', BannerController::class);
@@ -55,6 +57,12 @@ Route::get('/list-ruangan', [RoomController::class, 'list_ruangan'])->name('list
 Route::get('/detail-ruangan/{id}', [RoomController::class, 'detail_ruangan'])->name('detail-ruangan');
 
 Route::resource('class', ClassController::class);
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/cart', [CartController::class, 'index'])->name('cart');
+    Route::delete('/cart/{id}', [CartController::class, 'delete'])->name('cart-delete');
+
+});
 
 Route::prefix('jadwal')->group( function() {
     Route::get('/dosen', [ ScheduleController::class, 'jadwal_dosen' ])->name('jadwal.dosen');
