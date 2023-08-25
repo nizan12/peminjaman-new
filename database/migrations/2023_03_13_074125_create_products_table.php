@@ -13,16 +13,11 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('nomor_bmn');
+            
             $table->string('name');
-            $table->foreignId('users_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('categories_id')->constrained('categories')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('rooms_id')->constrained('rooms')->onDelete('cascade')->onUpdate('cascade');
             $table->text('description');
-            $table->integer('stock')->default(0);
-            $table->string('location');
+            $table->foreignId('categories_id')->constrained('categories')->onDelete('cascade')->onUpdate('cascade');
             $table->string('slug');
-            $table->string('condition');
             
             $table->timestamps();
         });
