@@ -13,7 +13,35 @@ body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
 }
-
+/* .authincation-content {
+  background: #0B2A97;
+  box-shadow: 0 0 35px 0 rgba(154, 161, 171, 0.15);
+  border-radius: 20px; }
+  [data-theme-version="dark"] .authincation-content {
+    background: #1e2746;
+    box-shadow: none; }
+    .auth-form {
+      padding: 50px 50px; }
+      @media only screen and (max-width: 575px) {
+        .auth-form {
+          padding: 30px; } }
+      .auth-form .btn {
+        font-weight: 700; }
+      .auth-form .page-back {
+        display: inline-block;
+        margin-bottom: 15px; }
+        .text-primary {
+          color: #0B2A97 !important; }
+          .btn-block {
+            display: block;
+            width: 100%; }
+            .btn-block + .btn-block {
+              margin-top: 0.5rem; }
+          
+          input[type="submit"].btn-block,
+          input[type="reset"].btn-block,
+          input[type="button"].btn-block {
+            width: 100%; } */
 a {
   color: #3498db;
   text-decoration: none;

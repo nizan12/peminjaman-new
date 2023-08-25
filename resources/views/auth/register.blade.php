@@ -7,7 +7,7 @@ Login
 @section('content')
 
 <!-- ======= Breadcrumbs Section ======= -->
-<section class="breadcrumbs">
+<!-- <section class="breadcrumbs">
     <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
@@ -19,9 +19,10 @@ Login
         </div>
 
     </div>
-</section><!-- End Breadcrumbs Section -->
+</section> -->
+<!-- End Breadcrumbs Section -->
 
-<section class="inner-page">
+<section class="inner-page" style="padding-top: 200px">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -90,6 +91,10 @@ Login
                             </div>
                         </div>
                     </form>
+                    <div style="align-items: center; display: flex; justify-content: center; margin-top: 50px; ">
+                          <p class="text-black">Have an account ? <a class="text-blue" href="{{ route('login') }}">Sign in</a>
+                          </p>
+                        </div>
                 </div>
             </div>
         </div>

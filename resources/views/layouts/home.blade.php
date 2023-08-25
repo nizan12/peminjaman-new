@@ -28,6 +28,7 @@
 
     <!-- Template Main CSS File -->
     <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
     <!-- =======================================================
 * Template Name: Vesperr
@@ -48,7 +49,12 @@
 <body>
 
 
+
     <style>
+        /* .authincation-content {
+            background: #3498db;
+            border-radius: 30px;
+        } */
         .event-title {
             white-space: normal;
             padding: 5px;
@@ -125,6 +131,7 @@
             line-height: 55px;
             border-radius: 15px;
         }
+        
 
     </style>
 
@@ -166,9 +173,9 @@
                     <li><a class="getstarted scrollto" href="/home">Dashboard</a></li>
                     @else
 
-                    @if (Route::has('register'))
+                    <!-- @if (Route::has('register'))
                     <li><a class="nav-link scrollto" href="/register">Register</a></li>
-                    @endif
+                    @endif -->
 
                     <li><a class="getstarted scrollto" href="/login">Login</a></li>
 
@@ -200,6 +207,7 @@
     <!-- Template Main JS File -->
     <script src="/assets/js/main.js"></script>
 
+
     @include('elements.footer-scripts')
 
     <!-- Library Moment.js -->
@@ -211,7 +219,7 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js'></script>
 
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/index.global.min.js'></script>
-
+    
 
 
     @stack('addon-scripts')
